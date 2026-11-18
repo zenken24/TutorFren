@@ -1,0 +1,14 @@
+# Rubric for explanation checking. DRAFT - needs teacher review before the pilot.
+concept_id: g5m-c3-lcm
+title: { en: "Least common multiple (LCM)", bn: "লঘিষ্ঠ সাধারণ গুণিতক (লসাগু)" }
+reviewed_by_teacher: false
+key_ideas:
+  - { id: k1, en: "List the multiples of each number and find the ones they share", bn: "প্রতিটি সংখ্যার গুণিতক লিখে যেগুলো মিলে যায় সেগুলো খুঁজতে হয়" }
+  - { id: k2, en: "The LCM is the smallest common multiple", bn: "সাধারণ গুণিতকগুলোর মধ্যে সবচেয়ে ছোটটি লসাগু" }
+common_misconceptions:
+  - { id: lcm-is-product, en: "Always multiplies the two numbers", bn: "সবসময় সংখ্যা দুটি গুণ করে দেয়" }
+  - { id: lcm-is-hcf, en: "Gives the biggest common factor instead", bn: "লসাগুর বদলে গসাগু বলে" }
+accepted_simple_phrasings:
+  - { en: "The first number that shows up in both times tables", bn: "দুটি নামতাতেই প্রথম যে সংখ্যাটি আসে" }
+follow_up_questions:
+  - { en: "What is the LCM of 4 and 6, and how did you find it?", bn: "৪ ও ৬ এর লসাগু কত, কীভাবে পেলে?" }

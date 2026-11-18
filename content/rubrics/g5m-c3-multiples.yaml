@@ -1,0 +1,14 @@
+# Rubric for explanation checking. DRAFT - needs teacher review before the pilot.
+concept_id: g5m-c3-multiples
+title: { en: "Multiples and common multiples", bn: "গুণিতক ও সাধারণ গুণিতক" }
+reviewed_by_teacher: false
+key_ideas:
+  - { id: k1, en: "A multiple of a number is that number times any whole number", bn: "কোনো সংখ্যাকে যেকোনো পূর্ণসংখ্যা দিয়ে গুণ করলে তার গুণিতক পাওয়া যায়" }
+  - { id: k2, en: "A common multiple is a multiple of both numbers", bn: "যে সংখ্যা দুটি সংখ্যারই গুণিতক তা সাধারণ গুণিতক" }
+common_misconceptions:
+  - { id: multiple-is-factor, en: "Mixes up multiples with factors", bn: "গুণিতক আর গুণনীয়ক গুলিয়ে ফেলে" }
+  - { id: finite, en: "Thinks a number has only a few multiples", bn: "মনে করে গুণিতক মাত্র কয়েকটি" }
+accepted_simple_phrasings:
+  - { en: "It is the times table of the number, like 4, 8, 12, 16 for 4", bn: "এটা সংখ্যাটির নামতা, যেমন ৪ এর জন্য ৪, ৮, ১২, ১৬" }
+follow_up_questions:
+  - { en: "Can you tell me two common multiples of 3 and 4?", bn: "৩ ও ৪ এর দুটি সাধারণ গুণিতক বলতে পারো?" }

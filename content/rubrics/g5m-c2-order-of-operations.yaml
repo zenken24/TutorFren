@@ -1,0 +1,15 @@
+# Rubric for explanation checking. DRAFT - needs teacher review before the pilot.
+concept_id: g5m-c2-order-of-operations
+title: { en: "Order of operations and brackets", bn: "হিসাবের ধারাবাহিকতা" }
+reviewed_by_teacher: false
+key_ideas:
+  - { id: k1, en: "Work inside brackets first: ( ) then { } then [ ]", bn: "আগে বন্ধনীর ভেতরের কাজ: প্রথমে ( ), তারপর { }, তারপর [ ]" }
+  - { id: k2, en: "Multiplication and division come before addition and subtraction", bn: "যোগ-বিয়োগের আগে গুণ-ভাগ" }
+  - { id: k3, en: "Otherwise go from left to right", bn: "নাহলে বাম থেকে ডানে" }
+common_misconceptions:
+  - { id: left-to-right-only, en: "Always calculates left to right, ignoring × ÷ first", bn: "গুণ-ভাগ আগে না করে সবসময় বাম থেকে ডানে হিসাব করে" }
+  - { id: ignore-brackets, en: "Ignores the brackets", bn: "বন্ধনী উপেক্ষা করে" }
+accepted_simple_phrasings:
+  - { en: "Brackets first, then times and divide, then plus and minus", bn: "আগে বন্ধনী, তারপর গুণ-ভাগ, তারপর যোগ-বিয়োগ" }
+follow_up_questions:
+  - { en: "Why do 12 ÷ 2 × 3 and 12 ÷ (2 × 3) give different answers?", bn: "১২ ÷ ২ × ৩ আর ১২ ÷ (২ × ৩) এর উত্তর আলাদা কেন?" }

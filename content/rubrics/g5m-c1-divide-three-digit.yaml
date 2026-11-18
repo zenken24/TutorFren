@@ -1,0 +1,15 @@
+# Rubric for explanation checking. DRAFT - needs teacher review before the pilot.
+concept_id: g5m-c1-divide-three-digit
+title: { en: "Division by a three-digit number and checking", bn: "তিন অঙ্কের সংখ্যা দিয়ে ভাগ ও যাচাই" }
+reviewed_by_teacher: false
+key_ideas:
+  - { id: k1, en: "Start with the first digits of the dividend that are big enough for the divisor", bn: "ভাজ্যের প্রথম যে কয়টি অঙ্ক ভাজকের চেয়ে বড় বা সমান হয় সেখান থেকে শুরু করতে হয়" }
+  - { id: k2, en: "The remainder is always smaller than the divisor", bn: "ভাগশেষ সবসময় ভাজকের চেয়ে ছোট" }
+  - { id: k3, en: "Check: divisor × quotient + remainder = dividend", bn: "যাচাই: ভাজক × ভাগফল + ভাগশেষ = ভাজ্য" }
+common_misconceptions:
+  - { id: big-remainder, en: "Accepts a remainder bigger than the divisor", bn: "ভাজকের চেয়ে বড় ভাগশেষ রেখে দেয়" }
+  - { id: check-wrong, en: "Checks with quotient × remainder", bn: "ভাগফল × ভাগশেষ দিয়ে যাচাই করে" }
+accepted_simple_phrasings:
+  - { en: "See how many times it fits, take away, bring down the next digit, and what is left must be smaller than the divider", bn: "কতবার যায় দেখি, বিয়োগ করি, পরের অঙ্ক নামাই; যা থাকে তা ভাজকের চেয়ে ছোট হতে হবে" }
+follow_up_questions:
+  - { en: "How can you check your division answer is right?", bn: "তোমার ভাগের উত্তর ঠিক কি না কীভাবে যাচাই করবে?" }

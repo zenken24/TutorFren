@@ -1,0 +1,62 @@
+{"concept_id":"g5m-c1-divide-by-10-100","language":"en","text":"Count the zeros, chop that many digits off the end, the chopped part is what is left over","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c1-divide-by-10-100","language":"en","text":"Thinks it only works when the number ends in zero","expected":["misconception","partial"],"misconception_id":"drop-zero-only"}
+{"concept_id":"g5m-c1-divide-by-10-100","language":"en","text":"umm I think it is about numbers","expected":["unsure","partial"]}
+{"concept_id":"g5m-c1-divide-by-10-100","language":"bn","text":"শূন্য গুনে শেষ থেকে ততটি অঙ্ক কেটে দিই, কাটা অংশটা ভাগশেষ","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c1-divide-by-10-100","language":"bn","text":"মনে করে শুধু শেষে শূন্য থাকলেই হয়","expected":["misconception","partial"],"misconception_id":"drop-zero-only"}
+{"concept_id":"g5m-c1-divide-by-10-100","language":"bn","text":"উম্ম মনে হয় সংখ্যা নিয়ে কিছু","expected":["unsure","partial"]}
+{"concept_id":"g5m-c1-divide-three-digit","language":"en","text":"See how many times it fits, take away, bring down the next digit, and what is left must be smaller than the divider","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c1-divide-three-digit","language":"en","text":"Accepts a remainder bigger than the divisor","expected":["misconception","partial"],"misconception_id":"big-remainder"}
+{"concept_id":"g5m-c1-divide-three-digit","language":"en","text":"Checks with quotient × remainder","expected":["misconception","partial"],"misconception_id":"check-wrong"}
+{"concept_id":"g5m-c1-divide-three-digit","language":"en","text":"umm I think it is about numbers","expected":["unsure","partial"]}
+{"concept_id":"g5m-c1-divide-three-digit","language":"bn","text":"কতবার যায় দেখি, বিয়োগ করি, পরের অঙ্ক নামাই; যা থাকে তা ভাজকের চেয়ে ছোট হতে হবে","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c1-divide-three-digit","language":"bn","text":"ভাজকের চেয়ে বড় ভাগশেষ রেখে দেয়","expected":["misconception","partial"],"misconception_id":"big-remainder"}
+{"concept_id":"g5m-c1-divide-three-digit","language":"bn","text":"ভাগফল × ভাগশেষ দিয়ে যাচাই করে","expected":["misconception","partial"],"misconception_id":"check-wrong"}
+{"concept_id":"g5m-c1-divide-three-digit","language":"bn","text":"উম্ম মনে হয় সংখ্যা নিয়ে কিছু","expected":["unsure","partial"]}
+{"concept_id":"g5m-c1-multiply-vertical","language":"en","text":"You times the top number by each bottom digit, move over each time, then add them up","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c1-multiply-vertical","language":"en","text":"Writes every partial product in the same place without shifting","expected":["misconception","partial"],"misconception_id":"no-shift"}
+{"concept_id":"g5m-c1-multiply-vertical","language":"en","text":"Multiplies only matching digits (ones×ones, tens×tens)","expected":["misconception","partial"],"misconception_id":"digits-only"}
+{"concept_id":"g5m-c1-multiply-vertical","language":"en","text":"umm I think it is about numbers","expected":["unsure","partial"]}
+{"concept_id":"g5m-c1-multiply-vertical","language":"bn","text":"উপরের সংখ্যাকে নিচের প্রতিটি অঙ্ক দিয়ে গুণ করি, প্রতিবার এক ঘর সরাই, তারপর সব যোগ করি","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c1-multiply-vertical","language":"bn","text":"সব আংশিক গুণফল না সরিয়ে একই ঘরে লেখে","expected":["misconception","partial"],"misconception_id":"no-shift"}
+{"concept_id":"g5m-c1-multiply-vertical","language":"bn","text":"শুধু একই ঘরের অঙ্ক গুণ করে","expected":["misconception","partial"],"misconception_id":"digits-only"}
+{"concept_id":"g5m-c1-multiply-vertical","language":"bn","text":"উম্ম মনে হয় সংখ্যা নিয়ে কিছু","expected":["unsure","partial"]}
+{"concept_id":"g5m-c2-order-of-operations","language":"en","text":"Brackets first, then times and divide, then plus and minus","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c2-order-of-operations","language":"en","text":"Always calculates left to right, ignoring × ÷ first","expected":["misconception","partial"],"misconception_id":"left-to-right-only"}
+{"concept_id":"g5m-c2-order-of-operations","language":"en","text":"Ignores the brackets","expected":["misconception","partial"],"misconception_id":"ignore-brackets"}
+{"concept_id":"g5m-c2-order-of-operations","language":"en","text":"umm I think it is about numbers","expected":["unsure","partial"]}
+{"concept_id":"g5m-c2-order-of-operations","language":"bn","text":"আগে বন্ধনী, তারপর গুণ-ভাগ, তারপর যোগ-বিয়োগ","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c2-order-of-operations","language":"bn","text":"গুণ-ভাগ আগে না করে সবসময় বাম থেকে ডানে হিসাব করে","expected":["misconception","partial"],"misconception_id":"left-to-right-only"}
+{"concept_id":"g5m-c2-order-of-operations","language":"bn","text":"বন্ধনী উপেক্ষা করে","expected":["misconception","partial"],"misconception_id":"ignore-brackets"}
+{"concept_id":"g5m-c2-order-of-operations","language":"bn","text":"উম্ম মনে হয় সংখ্যা নিয়ে কিছু","expected":["unsure","partial"]}
+{"concept_id":"g5m-c2-unitary-method","language":"en","text":"Find how much one costs, then times it by how many you want","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c2-unitary-method","language":"en","text":"Multiplies directly without finding the value of one","expected":["misconception","partial"],"misconception_id":"skip-one"}
+{"concept_id":"g5m-c2-unitary-method","language":"en","text":"Always divides first even for workers-and-days problems","expected":["misconception","partial"],"misconception_id":"always-divide"}
+{"concept_id":"g5m-c2-unitary-method","language":"en","text":"umm I think it is about numbers","expected":["unsure","partial"]}
+{"concept_id":"g5m-c2-unitary-method","language":"bn","text":"একটার দাম বের করি, তারপর যতগুলো চাই তত দিয়ে গুণ করি","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c2-unitary-method","language":"bn","text":"একটির মান না বের করে সরাসরি গুণ করে","expected":["misconception","partial"],"misconception_id":"skip-one"}
+{"concept_id":"g5m-c2-unitary-method","language":"bn","text":"লোক-দিনের সমস্যাতেও সবসময় আগে ভাগ করে","expected":["misconception","partial"],"misconception_id":"always-divide"}
+{"concept_id":"g5m-c2-unitary-method","language":"bn","text":"উম্ম মনে হয় সংখ্যা নিয়ে কিছু","expected":["unsure","partial"]}
+{"concept_id":"g5m-c3-hcf","language":"en","text":"The biggest number that can share both things equally with nothing left","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c3-hcf","language":"en","text":"Gives the smallest common multiple instead","expected":["misconception","partial"],"misconception_id":"hcf-is-lcm"}
+{"concept_id":"g5m-c3-hcf","language":"en","text":"Says numbers like 13 and 16 have no common factor (forgets 1)","expected":["misconception","partial"],"misconception_id":"forget-one"}
+{"concept_id":"g5m-c3-hcf","language":"en","text":"umm I think it is about numbers","expected":["unsure","partial"]}
+{"concept_id":"g5m-c3-hcf","language":"bn","text":"সবচেয়ে বড় যে সংখ্যা দিয়ে দুটোই সমান ভাগ করা যায়, কিছু বাকি থাকে না","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c3-hcf","language":"bn","text":"গসাগুর বদলে লসাগু বলে","expected":["misconception","partial"],"misconception_id":"hcf-is-lcm"}
+{"concept_id":"g5m-c3-hcf","language":"bn","text":"বলে ১৩ ও ১৬ এর কোনো সাধারণ গুণনীয়ক নেই (১ ভুলে যায়)","expected":["misconception","partial"],"misconception_id":"forget-one"}
+{"concept_id":"g5m-c3-hcf","language":"bn","text":"উম্ম মনে হয় সংখ্যা নিয়ে কিছু","expected":["unsure","partial"]}
+{"concept_id":"g5m-c3-lcm","language":"en","text":"The first number that shows up in both times tables","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c3-lcm","language":"en","text":"Always multiplies the two numbers","expected":["misconception","partial"],"misconception_id":"lcm-is-product"}
+{"concept_id":"g5m-c3-lcm","language":"en","text":"Gives the biggest common factor instead","expected":["misconception","partial"],"misconception_id":"lcm-is-hcf"}
+{"concept_id":"g5m-c3-lcm","language":"en","text":"umm I think it is about numbers","expected":["unsure","partial"]}
+{"concept_id":"g5m-c3-lcm","language":"bn","text":"দুটি নামতাতেই প্রথম যে সংখ্যাটি আসে","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c3-lcm","language":"bn","text":"সবসময় সংখ্যা দুটি গুণ করে দেয়","expected":["misconception","partial"],"misconception_id":"lcm-is-product"}
+{"concept_id":"g5m-c3-lcm","language":"bn","text":"লসাগুর বদলে গসাগু বলে","expected":["misconception","partial"],"misconception_id":"lcm-is-hcf"}
+{"concept_id":"g5m-c3-lcm","language":"bn","text":"উম্ম মনে হয় সংখ্যা নিয়ে কিছু","expected":["unsure","partial"]}
+{"concept_id":"g5m-c3-multiples","language":"en","text":"It is the times table of the number, like 4, 8, 12, 16 for 4","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c3-multiples","language":"en","text":"Mixes up multiples with factors","expected":["misconception","partial"],"misconception_id":"multiple-is-factor"}
+{"concept_id":"g5m-c3-multiples","language":"en","text":"Thinks a number has only a few multiples","expected":["misconception","partial"],"misconception_id":"finite"}
+{"concept_id":"g5m-c3-multiples","language":"en","text":"umm I think it is about numbers","expected":["unsure","partial"]}
+{"concept_id":"g5m-c3-multiples","language":"bn","text":"এটা সংখ্যাটির নামতা, যেমন ৪ এর জন্য ৪, ৮, ১২, ১৬","expected":["correct_simple","correct_full"]}
+{"concept_id":"g5m-c3-multiples","language":"bn","text":"গুণিতক আর গুণনীয়ক গুলিয়ে ফেলে","expected":["misconception","partial"],"misconception_id":"multiple-is-factor"}
+{"concept_id":"g5m-c3-multiples","language":"bn","text":"মনে করে গুণিতক মাত্র কয়েকটি","expected":["misconception","partial"],"misconception_id":"finite"}
+{"concept_id":"g5m-c3-multiples","language":"bn","text":"উম্ম মনে হয় সংখ্যা নিয়ে কিছু","expected":["unsure","partial"]}

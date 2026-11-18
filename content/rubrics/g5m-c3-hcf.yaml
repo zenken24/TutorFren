@@ -1,0 +1,15 @@
+# Rubric for explanation checking. DRAFT - needs teacher review before the pilot.
+concept_id: g5m-c3-hcf
+title: { en: "Highest common factor (HCF)", bn: "গরিষ্ঠ সাধারণ গুণনীয়ক" }
+reviewed_by_teacher: false
+key_ideas:
+  - { id: k1, en: "A factor divides the number with no remainder", bn: "গুণনীয়ক দিয়ে ভাগ করলে ভাগশেষ থাকে না" }
+  - { id: k2, en: "Common factors are factors of both numbers", bn: "যে গুণনীয়ক দুটি সংখ্যারই, তা সাধারণ গুণনীয়ক" }
+  - { id: k3, en: "The HCF is the largest common factor", bn: "সাধারণ গুণনীয়কের মধ্যে সবচেয়ে বড়টি গসাগু" }
+common_misconceptions:
+  - { id: hcf-is-lcm, en: "Gives the smallest common multiple instead", bn: "গসাগুর বদলে লসাগু বলে" }
+  - { id: forget-one, en: "Says numbers like 13 and 16 have no common factor (forgets 1)", bn: "বলে ১৩ ও ১৬ এর কোনো সাধারণ গুণনীয়ক নেই (১ ভুলে যায়)" }
+accepted_simple_phrasings:
+  - { en: "The biggest number that can share both things equally with nothing left", bn: "সবচেয়ে বড় যে সংখ্যা দিয়ে দুটোই সমান ভাগ করা যায়, কিছু বাকি থাকে না" }
+follow_up_questions:
+  - { en: "What is the HCF of 8 and 12? Which factors do they share?", bn: "৮ ও ১২ এর গসাগু কত? কোন গুণনীয়কগুলো মিলে যায়?" }

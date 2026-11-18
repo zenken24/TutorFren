@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+node_modules/
+content/sources/
+content/generated/
+evals/stt/audio/
+.expo/
+dist/
+supabase/.temp/
+supabase/.branches/
+.DS_Store
+*.tsbuildinfo

@@ -1,0 +1,15 @@
+# Rubric for explanation checking. DRAFT - needs teacher review before the pilot.
+concept_id: g5m-c2-unitary-method
+title: { en: "Unitary method", bn: "ঐকিক নিয়ম" }
+reviewed_by_teacher: false
+key_ideas:
+  - { id: k1, en: "First find the value of one unit", bn: "প্রথমে একটির মান বের করতে হয়" }
+  - { id: k2, en: "Then multiply to get the value of many units", bn: "তারপর গুণ করে অনেকগুলোর মান বের করতে হয়" }
+  - { id: k3, en: "If fewer workers means more time, multiply first and then divide", bn: "লোক কমলে সময় বাড়ে, তখন আগে গুণ পরে ভাগ" }
+common_misconceptions:
+  - { id: skip-one, en: "Multiplies directly without finding the value of one", bn: "একটির মান না বের করে সরাসরি গুণ করে" }
+  - { id: always-divide, en: "Always divides first even for workers-and-days problems", bn: "লোক-দিনের সমস্যাতেও সবসময় আগে ভাগ করে" }
+accepted_simple_phrasings:
+  - { en: "Find how much one costs, then times it by how many you want", bn: "একটার দাম বের করি, তারপর যতগুলো চাই তত দিয়ে গুণ করি" }
+follow_up_questions:
+  - { en: "12 mangoes cost 264 taka. What do you find first to get the price of 35 mangoes?", bn: "১২টি আমের দাম ২৬৪ টাকা। ৩৫টির দাম বের করতে প্রথমে কী বের করবে?" }

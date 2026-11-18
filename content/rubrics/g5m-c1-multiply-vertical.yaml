@@ -1,0 +1,15 @@
+# Rubric for explanation checking. DRAFT - needs teacher review before the pilot.
+concept_id: g5m-c1-multiply-vertical
+title: { en: "Multiplying large numbers vertically", bn: "বড় সংখ্যার গুণ" }
+reviewed_by_teacher: false
+key_ideas:
+  - { id: k1, en: "Multiply by each digit of the multiplier (ones, tens, hundreds, thousands) separately", bn: "গুণকের প্রতিটি অঙ্ক (একক, দশক, শতক, হাজার) দিয়ে আলাদা করে গুণ করতে হয়" }
+  - { id: k2, en: "Each partial product starts one place further left (or ends in extra zeros)", bn: "প্রতিটি আংশিক গুণফল এক ঘর বামে সরে বসে (বা শেষে শূন্য বসে)" }
+  - { id: k3, en: "Add all the partial products to get the answer", bn: "সব আংশিক গুণফল যোগ করলে উত্তর পাওয়া যায়" }
+common_misconceptions:
+  - { id: no-shift, en: "Writes every partial product in the same place without shifting", bn: "সব আংশিক গুণফল না সরিয়ে একই ঘরে লেখে" }
+  - { id: digits-only, en: "Multiplies only matching digits (ones×ones, tens×tens)", bn: "শুধু একই ঘরের অঙ্ক গুণ করে" }
+accepted_simple_phrasings:
+  - { en: "You times the top number by each bottom digit, move over each time, then add them up", bn: "উপরের সংখ্যাকে নিচের প্রতিটি অঙ্ক দিয়ে গুণ করি, প্রতিবার এক ঘর সরাই, তারপর সব যোগ করি" }
+follow_up_questions:
+  - { en: "When you multiply by the tens digit, where do you start writing and why?", bn: "দশকের অঙ্ক দিয়ে গুণ করলে কোন ঘর থেকে লেখা শুরু করো, কেন?" }

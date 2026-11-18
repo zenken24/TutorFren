@@ -1,0 +1,6 @@
+title = "TutorFren gitleaks config"
+[extend]
+useDefault = true
+[allowlist]
+description = "Generated textbook data and lockfiles"
+paths = ['''content/textbook/.*\.json''', '''supabase/functions/_shared/textbook/index\.json''', '''apps/mobile/src/content/.*\.json''', '''package-lock\.json''', '''supabase/seed\.sql''']

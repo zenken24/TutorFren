@@ -1,0 +1,40 @@
+{"query":"How do I do multiplying large numbers vertically?","language":"en","expected_lesson_id":"c1-l1","expected_chapter":1}
+{"query":"বড় সংখ্যার গুণ (উপরে-নিচে) কীভাবে করব?","language":"bn","expected_lesson_id":"c1-l1","expected_chapter":1}
+{"query":"How do I do multiplying horizontally by breaking up a number?","language":"en","expected_lesson_id":"c1-l2","expected_chapter":1}
+{"query":"ভেঙে পাশাপাশি গুণ কীভাবে করব?","language":"bn","expected_lesson_id":"c1-l2","expected_chapter":1}
+{"query":"How do I do unknown numbers in mathematical sentences?","language":"en","expected_lesson_id":"c2-l1","expected_chapter":2}
+{"query":"গাণিতিক বাক্যে অজানা সংখ্যা কীভাবে করব?","language":"bn","expected_lesson_id":"c2-l1","expected_chapter":2}
+{"query":"How do I do open and closed sentences?","language":"en","expected_lesson_id":"c2-l2","expected_chapter":2}
+{"query":"খোলা বাক্য ও বদ্ধ বাক্য কীভাবে করব?","language":"bn","expected_lesson_id":"c2-l2","expected_chapter":2}
+{"query":"How do I do multiples and common multiples?","language":"en","expected_lesson_id":"c3-l1","expected_chapter":3}
+{"query":"গুণিতক ও সাধারণ গুণিতক কীভাবে করব?","language":"bn","expected_lesson_id":"c3-l1","expected_chapter":3}
+{"query":"How do I do least common multiple (lcm)?","language":"en","expected_lesson_id":"c3-l2","expected_chapter":3}
+{"query":"লঘিষ্ঠ সাধারণ গুণিতক (লসাগু) কীভাবে করব?","language":"bn","expected_lesson_id":"c3-l2","expected_chapter":3}
+{"query":"How do I do mixed and improper fractions?","language":"en","expected_lesson_id":"c4-l1","expected_chapter":4}
+{"query":"মিশ্র ও অপ্রকৃত ভগ্নাংশ কীভাবে করব?","language":"bn","expected_lesson_id":"c4-l1","expected_chapter":4}
+{"query":"How do I do equivalent fractions?","language":"en","expected_lesson_id":"c4-l2","expected_chapter":4}
+{"query":"সমতুল ভগ্নাংশ কীভাবে করব?","language":"bn","expected_lesson_id":"c4-l2","expected_chapter":4}
+{"query":"How do I do tenths, hundredths and thousandths?","language":"en","expected_lesson_id":"c5-l1","expected_chapter":5}
+{"query":"দশমাংশ, শতাংশ ও সহস্রাংশ কীভাবে করব?","language":"bn","expected_lesson_id":"c5-l1","expected_chapter":5}
+{"query":"How do I do converting between decimal and common fractions?","language":"en","expected_lesson_id":"c5-l2","expected_chapter":5}
+{"query":"সাধারণ ভগ্নাংশে ও দশমিক ভগ্নাংশে রূপান্তর কীভাবে করব?","language":"bn","expected_lesson_id":"c5-l2","expected_chapter":5}
+{"query":"How do I do what percent means?","language":"en","expected_lesson_id":"c6-l1","expected_chapter":6}
+{"query":"শতকরা কী কীভাবে করব?","language":"bn","expected_lesson_id":"c6-l1","expected_chapter":6}
+{"query":"How do I do finding a percentage of a quantity?","language":"en","expected_lesson_id":"c6-l2","expected_chapter":6}
+{"query":"কোনো পরিমাণের শতকরা অংশ নির্ণয় কীভাবে করব?","language":"bn","expected_lesson_id":"c6-l2","expected_chapter":6}
+{"query":"How do I do what an average is?","language":"en","expected_lesson_id":"c7-l1","expected_chapter":7}
+{"query":"গড় কী কীভাবে করব?","language":"bn","expected_lesson_id":"c7-l1","expected_chapter":7}
+{"query":"How do I do finding totals and missing values from an average?","language":"en","expected_lesson_id":"c7-l2","expected_chapter":7}
+{"query":"গড় থেকে মোট ও অজানা মান নির্ণয় কীভাবে করব?","language":"bn","expected_lesson_id":"c7-l2","expected_chapter":7}
+{"query":"How do I do length measurement?","language":"en","expected_lesson_id":"c8-l1","expected_chapter":8}
+{"query":"দৈর্ঘ্য পরিমাপ কীভাবে করব?","language":"bn","expected_lesson_id":"c8-l1","expected_chapter":8}
+{"query":"How do I do weight measurement?","language":"en","expected_lesson_id":"c8-l2","expected_chapter":8}
+{"query":"ওজন পরিমাপ কীভাবে করব?","language":"bn","expected_lesson_id":"c8-l2","expected_chapter":8}
+{"query":"How do I do trapezium and parallelogram?","language":"en","expected_lesson_id":"c9-l1","expected_chapter":9}
+{"query":"ট্রাপিজিয়াম ও সামান্তরিক কীভাবে করব?","language":"bn","expected_lesson_id":"c9-l1","expected_chapter":9}
+{"query":"How do I do rhombus?","language":"en","expected_lesson_id":"c9-l2","expected_chapter":9}
+{"query":"রম্বস কীভাবে করব?","language":"bn","expected_lesson_id":"c9-l2","expected_chapter":9}
+{"query":"How do I do arranging data in tables?","language":"en","expected_lesson_id":"c10-l1","expected_chapter":10}
+{"query":"উপাত্ত সাজানো ও সারণি কীভাবে করব?","language":"bn","expected_lesson_id":"c10-l1","expected_chapter":10}
+{"query":"How do I do bar diagrams and histograms?","language":"en","expected_lesson_id":"c10-l2","expected_chapter":10}
+{"query":"স্তম্ভলেখ ও আয়তলেখ কীভাবে করব?","language":"bn","expected_lesson_id":"c10-l2","expected_chapter":10}

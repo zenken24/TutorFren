@@ -1,0 +1,55 @@
+{
+  "expo": {
+    "name": "TutorFren",
+    "slug": "tutorfren",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.futureframe.tutorfren"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "allowBackup": false,
+      "package": "com.futureframe.tutorfren",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "TutorFren uses the microphone only to turn your voice into text. Recordings are never saved."
+        }
+      ],
+      "expo-font",
+      "expo-localization",
+      "expo-image",
+      "expo-splash-screen",
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Unlock guardian mode."
+        }
+      ]
+    ],
+    "scheme": "tutorfren",
+    "experiments": {
+      "typedRoutes": false
+    }
+  }
+}

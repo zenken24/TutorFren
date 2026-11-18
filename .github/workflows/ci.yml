@@ -1,0 +1,34 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci && npm --prefix apps/mobile ci
+      - run: bash scripts/check-invariants.sh
+      - run: node scripts/sync-textbook-index.mjs --check
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run test
+      - uses: gitleaks/gitleaks-action@v2
+        env: { GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+  database:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci
+      - run: npx supabase start -x studio,imgproxy,realtime,logflare,vector,supavisor,mailpit,postgres-meta
+      - run: npx supabase db lint --level error
+      - run: npx supabase test db
+      - name: end-to-end smoke test (synthetic data, no Gemini key -> degraded tutor replies)
+        run: |
+          npm run dev:env && npm run seed:demo
+          npx supabase functions serve --env-file supabase/functions/.env --no-verify-jwt > /tmp/functions.log 2>&1 &
+          sleep 20 && npm run smoke
+          ! grep -q "canary-tiger-42" /tmp/functions.log

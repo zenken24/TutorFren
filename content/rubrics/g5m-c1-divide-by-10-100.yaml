@@ -1,0 +1,13 @@
+# Rubric for explanation checking. DRAFT - needs teacher review before the pilot.
+concept_id: g5m-c1-divide-by-10-100
+title: { en: "Dividing by 10 and 100", bn: "১০ ও ১০০ দিয়ে ভাগ" }
+reviewed_by_teacher: false
+key_ideas:
+  - { id: k1, en: "Dividing by 10 cuts off the last digit; by 100 the last two digits", bn: "১০ দিয়ে ভাগ করলে শেষের একটি অঙ্ক, ১০০ দিয়ে করলে শেষের দুটি অঙ্ক বাদ যায়" }
+  - { id: k2, en: "The digits cut off are the remainder; the rest is the quotient", bn: "বাদ যাওয়া অঙ্কগুলোই ভাগশেষ, বাকিটা ভাগফল" }
+common_misconceptions:
+  - { id: drop-zero-only, en: "Thinks it only works when the number ends in zero", bn: "মনে করে শুধু শেষে শূন্য থাকলেই হয়" }
+accepted_simple_phrasings:
+  - { en: "Count the zeros, chop that many digits off the end, the chopped part is what is left over", bn: "শূন্য গুনে শেষ থেকে ততটি অঙ্ক কেটে দিই, কাটা অংশটা ভাগশেষ" }
+follow_up_questions:
+  - { en: "What are the quotient and remainder of 63973 ÷ 100?", bn: "৬৩৯৭৩ ÷ ১০০ এর ভাগফল ও ভাগশেষ কত?" }

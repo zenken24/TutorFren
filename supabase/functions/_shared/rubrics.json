@@ -1,0 +1,374 @@
+{
+ "g5m-c1-divide-by-10-100": {
+  "concept_id": "g5m-c1-divide-by-10-100",
+  "title": {
+   "en": "Dividing by 10 and 100",
+   "bn": "১০ ও ১০০ দিয়ে ভাগ"
+  },
+  "reviewed_by_teacher": false,
+  "key_ideas": [
+   {
+    "id": "k1",
+    "en": "Dividing by 10 cuts off the last digit; by 100 the last two digits",
+    "bn": "১০ দিয়ে ভাগ করলে শেষের একটি অঙ্ক, ১০০ দিয়ে করলে শেষের দুটি অঙ্ক বাদ যায়"
+   },
+   {
+    "id": "k2",
+    "en": "The digits cut off are the remainder; the rest is the quotient",
+    "bn": "বাদ যাওয়া অঙ্কগুলোই ভাগশেষ, বাকিটা ভাগফল"
+   }
+  ],
+  "common_misconceptions": [
+   {
+    "id": "drop-zero-only",
+    "en": "Thinks it only works when the number ends in zero",
+    "bn": "মনে করে শুধু শেষে শূন্য থাকলেই হয়"
+   }
+  ],
+  "accepted_simple_phrasings": [
+   {
+    "en": "Count the zeros, chop that many digits off the end, the chopped part is what is left over",
+    "bn": "শূন্য গুনে শেষ থেকে ততটি অঙ্ক কেটে দিই, কাটা অংশটা ভাগশেষ"
+   }
+  ],
+  "follow_up_questions": [
+   {
+    "en": "What are the quotient and remainder of 63973 ÷ 100?",
+    "bn": "৬৩৯৭৩ ÷ ১০০ এর ভাগফল ও ভাগশেষ কত?"
+   }
+  ]
+ },
+ "g5m-c1-divide-three-digit": {
+  "concept_id": "g5m-c1-divide-three-digit",
+  "title": {
+   "en": "Division by a three-digit number and checking",
+   "bn": "তিন অঙ্কের সংখ্যা দিয়ে ভাগ ও যাচাই"
+  },
+  "reviewed_by_teacher": false,
+  "key_ideas": [
+   {
+    "id": "k1",
+    "en": "Start with the first digits of the dividend that are big enough for the divisor",
+    "bn": "ভাজ্যের প্রথম যে কয়টি অঙ্ক ভাজকের চেয়ে বড় বা সমান হয় সেখান থেকে শুরু করতে হয়"
+   },
+   {
+    "id": "k2",
+    "en": "The remainder is always smaller than the divisor",
+    "bn": "ভাগশেষ সবসময় ভাজকের চেয়ে ছোট"
+   },
+   {
+    "id": "k3",
+    "en": "Check: divisor × quotient + remainder = dividend",
+    "bn": "যাচাই: ভাজক × ভাগফল + ভাগশেষ = ভাজ্য"
+   }
+  ],
+  "common_misconceptions": [
+   {
+    "id": "big-remainder",
+    "en": "Accepts a remainder bigger than the divisor",
+    "bn": "ভাজকের চেয়ে বড় ভাগশেষ রেখে দেয়"
+   },
+   {
+    "id": "check-wrong",
+    "en": "Checks with quotient × remainder",
+    "bn": "ভাগফল × ভাগশেষ দিয়ে যাচাই করে"
+   }
+  ],
+  "accepted_simple_phrasings": [
+   {
+    "en": "See how many times it fits, take away, bring down the next digit, and what is left must be smaller than the divider",
+    "bn": "কতবার যায় দেখি, বিয়োগ করি, পরের অঙ্ক নামাই; যা থাকে তা ভাজকের চেয়ে ছোট হতে হবে"
+   }
+  ],
+  "follow_up_questions": [
+   {
+    "en": "How can you check your division answer is right?",
+    "bn": "তোমার ভাগের উত্তর ঠিক কি না কীভাবে যাচাই করবে?"
+   }
+  ]
+ },
+ "g5m-c1-multiply-vertical": {
+  "concept_id": "g5m-c1-multiply-vertical",
+  "title": {
+   "en": "Multiplying large numbers vertically",
+   "bn": "বড় সংখ্যার গুণ"
+  },
+  "reviewed_by_teacher": false,
+  "key_ideas": [
+   {
+    "id": "k1",
+    "en": "Multiply by each digit of the multiplier (ones, tens, hundreds, thousands) separately",
+    "bn": "গুণকের প্রতিটি অঙ্ক (একক, দশক, শতক, হাজার) দিয়ে আলাদা করে গুণ করতে হয়"
+   },
+   {
+    "id": "k2",
+    "en": "Each partial product starts one place further left (or ends in extra zeros)",
+    "bn": "প্রতিটি আংশিক গুণফল এক ঘর বামে সরে বসে (বা শেষে শূন্য বসে)"
+   },
+   {
+    "id": "k3",
+    "en": "Add all the partial products to get the answer",
+    "bn": "সব আংশিক গুণফল যোগ করলে উত্তর পাওয়া যায়"
+   }
+  ],
+  "common_misconceptions": [
+   {
+    "id": "no-shift",
+    "en": "Writes every partial product in the same place without shifting",
+    "bn": "সব আংশিক গুণফল না সরিয়ে একই ঘরে লেখে"
+   },
+   {
+    "id": "digits-only",
+    "en": "Multiplies only matching digits (ones×ones, tens×tens)",
+    "bn": "শুধু একই ঘরের অঙ্ক গুণ করে"
+   }
+  ],
+  "accepted_simple_phrasings": [
+   {
+    "en": "You times the top number by each bottom digit, move over each time, then add them up",
+    "bn": "উপরের সংখ্যাকে নিচের প্রতিটি অঙ্ক দিয়ে গুণ করি, প্রতিবার এক ঘর সরাই, তারপর সব যোগ করি"
+   }
+  ],
+  "follow_up_questions": [
+   {
+    "en": "When you multiply by the tens digit, where do you start writing and why?",
+    "bn": "দশকের অঙ্ক দিয়ে গুণ করলে কোন ঘর থেকে লেখা শুরু করো, কেন?"
+   }
+  ]
+ },
+ "g5m-c2-order-of-operations": {
+  "concept_id": "g5m-c2-order-of-operations",
+  "title": {
+   "en": "Order of operations and brackets",
+   "bn": "হিসাবের ধারাবাহিকতা"
+  },
+  "reviewed_by_teacher": false,
+  "key_ideas": [
+   {
+    "id": "k1",
+    "en": "Work inside brackets first: ( ) then { } then [ ]",
+    "bn": "আগে বন্ধনীর ভেতরের কাজ: প্রথমে ( ), তারপর { }, তারপর [ ]"
+   },
+   {
+    "id": "k2",
+    "en": "Multiplication and division come before addition and subtraction",
+    "bn": "যোগ-বিয়োগের আগে গুণ-ভাগ"
+   },
+   {
+    "id": "k3",
+    "en": "Otherwise go from left to right",
+    "bn": "নাহলে বাম থেকে ডানে"
+   }
+  ],
+  "common_misconceptions": [
+   {
+    "id": "left-to-right-only",
+    "en": "Always calculates left to right, ignoring × ÷ first",
+    "bn": "গুণ-ভাগ আগে না করে সবসময় বাম থেকে ডানে হিসাব করে"
+   },
+   {
+    "id": "ignore-brackets",
+    "en": "Ignores the brackets",
+    "bn": "বন্ধনী উপেক্ষা করে"
+   }
+  ],
+  "accepted_simple_phrasings": [
+   {
+    "en": "Brackets first, then times and divide, then plus and minus",
+    "bn": "আগে বন্ধনী, তারপর গুণ-ভাগ, তারপর যোগ-বিয়োগ"
+   }
+  ],
+  "follow_up_questions": [
+   {
+    "en": "Why do 12 ÷ 2 × 3 and 12 ÷ (2 × 3) give different answers?",
+    "bn": "১২ ÷ ২ × ৩ আর ১২ ÷ (২ × ৩) এর উত্তর আলাদা কেন?"
+   }
+  ]
+ },
+ "g5m-c2-unitary-method": {
+  "concept_id": "g5m-c2-unitary-method",
+  "title": {
+   "en": "Unitary method",
+   "bn": "ঐকিক নিয়ম"
+  },
+  "reviewed_by_teacher": false,
+  "key_ideas": [
+   {
+    "id": "k1",
+    "en": "First find the value of one unit",
+    "bn": "প্রথমে একটির মান বের করতে হয়"
+   },
+   {
+    "id": "k2",
+    "en": "Then multiply to get the value of many units",
+    "bn": "তারপর গুণ করে অনেকগুলোর মান বের করতে হয়"
+   },
+   {
+    "id": "k3",
+    "en": "If fewer workers means more time, multiply first and then divide",
+    "bn": "লোক কমলে সময় বাড়ে, তখন আগে গুণ পরে ভাগ"
+   }
+  ],
+  "common_misconceptions": [
+   {
+    "id": "skip-one",
+    "en": "Multiplies directly without finding the value of one",
+    "bn": "একটির মান না বের করে সরাসরি গুণ করে"
+   },
+   {
+    "id": "always-divide",
+    "en": "Always divides first even for workers-and-days problems",
+    "bn": "লোক-দিনের সমস্যাতেও সবসময় আগে ভাগ করে"
+   }
+  ],
+  "accepted_simple_phrasings": [
+   {
+    "en": "Find how much one costs, then times it by how many you want",
+    "bn": "একটার দাম বের করি, তারপর যতগুলো চাই তত দিয়ে গুণ করি"
+   }
+  ],
+  "follow_up_questions": [
+   {
+    "en": "12 mangoes cost 264 taka. What do you find first to get the price of 35 mangoes?",
+    "bn": "১২টি আমের দাম ২৬৪ টাকা। ৩৫টির দাম বের করতে প্রথমে কী বের করবে?"
+   }
+  ]
+ },
+ "g5m-c3-hcf": {
+  "concept_id": "g5m-c3-hcf",
+  "title": {
+   "en": "Highest common factor (HCF)",
+   "bn": "গরিষ্ঠ সাধারণ গুণনীয়ক"
+  },
+  "reviewed_by_teacher": false,
+  "key_ideas": [
+   {
+    "id": "k1",
+    "en": "A factor divides the number with no remainder",
+    "bn": "গুণনীয়ক দিয়ে ভাগ করলে ভাগশেষ থাকে না"
+   },
+   {
+    "id": "k2",
+    "en": "Common factors are factors of both numbers",
+    "bn": "যে গুণনীয়ক দুটি সংখ্যারই, তা সাধারণ গুণনীয়ক"
+   },
+   {
+    "id": "k3",
+    "en": "The HCF is the largest common factor",
+    "bn": "সাধারণ গুণনীয়কের মধ্যে সবচেয়ে বড়টি গসাগু"
+   }
+  ],
+  "common_misconceptions": [
+   {
+    "id": "hcf-is-lcm",
+    "en": "Gives the smallest common multiple instead",
+    "bn": "গসাগুর বদলে লসাগু বলে"
+   },
+   {
+    "id": "forget-one",
+    "en": "Says numbers like 13 and 16 have no common factor (forgets 1)",
+    "bn": "বলে ১৩ ও ১৬ এর কোনো সাধারণ গুণনীয়ক নেই (১ ভুলে যায়)"
+   }
+  ],
+  "accepted_simple_phrasings": [
+   {
+    "en": "The biggest number that can share both things equally with nothing left",
+    "bn": "সবচেয়ে বড় যে সংখ্যা দিয়ে দুটোই সমান ভাগ করা যায়, কিছু বাকি থাকে না"
+   }
+  ],
+  "follow_up_questions": [
+   {
+    "en": "What is the HCF of 8 and 12? Which factors do they share?",
+    "bn": "৮ ও ১২ এর গসাগু কত? কোন গুণনীয়কগুলো মিলে যায়?"
+   }
+  ]
+ },
+ "g5m-c3-lcm": {
+  "concept_id": "g5m-c3-lcm",
+  "title": {
+   "en": "Least common multiple (LCM)",
+   "bn": "লঘিষ্ঠ সাধারণ গুণিতক (লসাগু)"
+  },
+  "reviewed_by_teacher": false,
+  "key_ideas": [
+   {
+    "id": "k1",
+    "en": "List the multiples of each number and find the ones they share",
+    "bn": "প্রতিটি সংখ্যার গুণিতক লিখে যেগুলো মিলে যায় সেগুলো খুঁজতে হয়"
+   },
+   {
+    "id": "k2",
+    "en": "The LCM is the smallest common multiple",
+    "bn": "সাধারণ গুণিতকগুলোর মধ্যে সবচেয়ে ছোটটি লসাগু"
+   }
+  ],
+  "common_misconceptions": [
+   {
+    "id": "lcm-is-product",
+    "en": "Always multiplies the two numbers",
+    "bn": "সবসময় সংখ্যা দুটি গুণ করে দেয়"
+   },
+   {
+    "id": "lcm-is-hcf",
+    "en": "Gives the biggest common factor instead",
+    "bn": "লসাগুর বদলে গসাগু বলে"
+   }
+  ],
+  "accepted_simple_phrasings": [
+   {
+    "en": "The first number that shows up in both times tables",
+    "bn": "দুটি নামতাতেই প্রথম যে সংখ্যাটি আসে"
+   }
+  ],
+  "follow_up_questions": [
+   {
+    "en": "What is the LCM of 4 and 6, and how did you find it?",
+    "bn": "৪ ও ৬ এর লসাগু কত, কীভাবে পেলে?"
+   }
+  ]
+ },
+ "g5m-c3-multiples": {
+  "concept_id": "g5m-c3-multiples",
+  "title": {
+   "en": "Multiples and common multiples",
+   "bn": "গুণিতক ও সাধারণ গুণিতক"
+  },
+  "reviewed_by_teacher": false,
+  "key_ideas": [
+   {
+    "id": "k1",
+    "en": "A multiple of a number is that number times any whole number",
+    "bn": "কোনো সংখ্যাকে যেকোনো পূর্ণসংখ্যা দিয়ে গুণ করলে তার গুণিতক পাওয়া যায়"
+   },
+   {
+    "id": "k2",
+    "en": "A common multiple is a multiple of both numbers",
+    "bn": "যে সংখ্যা দুটি সংখ্যারই গুণিতক তা সাধারণ গুণিতক"
+   }
+  ],
+  "common_misconceptions": [
+   {
+    "id": "multiple-is-factor",
+    "en": "Mixes up multiples with factors",
+    "bn": "গুণিতক আর গুণনীয়ক গুলিয়ে ফেলে"
+   },
+   {
+    "id": "finite",
+    "en": "Thinks a number has only a few multiples",
+    "bn": "মনে করে গুণিতক মাত্র কয়েকটি"
+   }
+  ],
+  "accepted_simple_phrasings": [
+   {
+    "en": "It is the times table of the number, like 4, 8, 12, 16 for 4",
+    "bn": "এটা সংখ্যাটির নামতা, যেমন ৪ এর জন্য ৪, ৮, ১২, ১৬"
+   }
+  ],
+  "follow_up_questions": [
+   {
+    "en": "Can you tell me two common multiples of 3 and 4?",
+    "bn": "৩ ও ৪ এর দুটি সাধারণ গুণিতক বলতে পারো?"
+   }
+  ]
+ }
+}

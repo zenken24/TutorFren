@@ -1,0 +1,37 @@
+{
+  "name": "tutorfren",
+  "private": true,
+  "version": "0.1.0",
+  "description": "TutorFren - bilingual adaptive maths tutor (Grade 5, Bangladesh). Monorepo root.",
+  "scripts": {
+    "setup": "npm install && npm --prefix apps/mobile install",
+    "typecheck": "npm run typecheck:functions && npm run typecheck:mobile",
+    "typecheck:mobile": "npm --prefix apps/mobile run typecheck",
+    "typecheck:functions": "deno check --config supabase/functions/deno.json supabase/functions/*/index.ts supabase/functions/_shared/*.ts supabase/functions/_shared/textbook/*.ts content/scripts/*.ts supabase/seed/demo.ts scripts/smoke.ts evals/run-evals.ts",
+    "test": "npm run test:functions && npm run test:mobile",
+    "test:functions": "deno test --config supabase/functions/deno.json --allow-read --allow-env supabase/functions",
+    "test:mobile": "npm --prefix apps/mobile test",
+    "lint": "npm --prefix apps/mobile run lint",
+    "check:invariants": "bash scripts/check-invariants.sh",
+    "sync:textbook": "node scripts/sync-textbook-index.mjs",
+    "content:render": "bash content/scripts/render-pages.sh",
+    "content:upload": "deno run --config supabase/functions/deno.json --allow-read --allow-net --allow-env --env-file=supabase/functions/.env content/scripts/upload-pages.ts",
+    "content:ingest": "deno run --config supabase/functions/deno.json --allow-read --allow-net --allow-env --env-file=supabase/functions/.env content/scripts/ingest.ts",
+    "db:start": "supabase start",
+    "db:reset": "supabase db reset",
+    "db:test": "supabase test db",
+    "functions:serve": "supabase functions serve --env-file supabase/functions/.env --no-verify-jwt",
+    "dev:env": "bash scripts/dev-env.sh",
+    "seed:demo": "deno run --config supabase/functions/deno.json --allow-net --allow-env --env-file=supabase/functions/.env supabase/seed/demo.ts",
+    "content:seed": "node content/scripts/build-seed.mjs",
+    "content:rubrics": "deno run --allow-read --allow-write content/scripts/build-rubrics.ts",
+    "smoke": "deno run --config supabase/functions/deno.json --allow-net --allow-env --env-file=supabase/functions/.env scripts/smoke.ts",
+    "evals:build": "node evals/build-evals.mjs",
+    "evals:safety": "deno run --config supabase/functions/deno.json --allow-net --allow-env --allow-read --env-file=supabase/functions/.env evals/run-evals.ts safety",
+    "app": "npm --prefix apps/mobile run start"
+  },
+  "devDependencies": {
+    "deno": "^2.9.6",
+    "supabase": "^3.1.0"
+  }
+}
