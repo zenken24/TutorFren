@@ -11,7 +11,8 @@ import { usePreventScreenCapture } from "expo-screen-capture";
 import { useTranslation } from "react-i18next";
 import { useSession } from "../lib/session";
 import { AUTO_LOCK_MS, deviceLockAvailable, fails, hasGuardianPin, MAX_FAILS, setGuardianPin, unlockWithDevice, unlockWithPin } from "../lib/lock";
-import { Btn, Card, Field, Notice, Screen, T } from "./ui";
+import { Btn, Card, Field, Notice, PasswordField, Screen, T } from "./ui";
+import { GoogleButton, OrLine } from "./GoogleButton";
 
 type Guarded = <T>(fn: () => Promise<T>) => Promise<T>;
 const StepUpContext = createContext<Guarded>((fn) => fn());
@@ -93,8 +94,10 @@ export function GuardianGate({ children }: { children: React.ReactNode }) {
             <T variant="h">{t("auth.reauthTitle")}</T>
             <T variant="small">{t("auth.reauth")}</T>
             {msg ? <Notice text={msg} /> : null}
-            <Field label={t("auth.password")} value={pw} onChangeText={setPw} secureTextEntry autoCapitalize="none" autoFocus onSubmitEditing={confirmPw} />
-            <Btn title={t("common.continue")} onPress={confirmPw} loading={pwBusy} disabled={pw.length < 10} />
+            <GoogleButton client={s._guardian} onDone={() => { setMsg(null); reauth?.resolve(true); setReauth(null); }} onMessage={setMsg} />
+            <OrLine />
+            <PasswordField label={t("auth.passwordPlain")} value={pw} onChangeText={setPw} onSubmitEditing={confirmPw} />
+            <Btn title={t("common.continue")} onPress={confirmPw} loading={pwBusy} disabled={!pw} />
             <Btn kind="ghost" title={t("common.cancel")} onPress={() => { reauth?.resolve(false); setReauth(null); }} />
           </View>
         </View>

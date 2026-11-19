@@ -32,7 +32,7 @@ export default function Consent() {
         await s.enrolChild({ id, nickname: name }, tok);
       }
       qc.invalidateQueries({ queryKey: ["g-children"] });
-      router.replace({ pathname: "/(guardian)/child", params: { id, name, mode } });
+      router.replace(mode === "shared" ? { pathname: "/(guardian)", params: { child: id } } : { pathname: "/(guardian)/devices", params: { child: id } }); // own phone: get a pairing code next
     } catch (e) { setMsg(t(errorKey(e))); }
     setBusy(false);
   };
@@ -45,7 +45,8 @@ export default function Consent() {
         <Card key={sc}>
           <Row className="justify-between"><T variant="h" className="flex-1">{t(`consent.${sc}`)}</T>
             <Switch accessibilityLabel={t(`consent.${sc}`)} value={scopes[sc]} disabled={sc === "core_learning"} onValueChange={(v) => setScopes({ ...scopes, [sc]: v })} trackColor={{ true: "#0F766E" }} /></Row>
-          <T variant="small">{t(`consent.${sc}.d`)}</T>
+          <T variant="small">{t(`cons.${sc}.what`)}</T>
+          <T variant="small">• {t(`cons.${sc}.stored`)}</T>
         </Card>
       ))}
       <Card>

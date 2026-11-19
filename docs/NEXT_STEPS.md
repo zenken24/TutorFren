@@ -357,3 +357,20 @@ Do **not** skip any of these:
 | Stop everything | Ctrl+C on functions → `npx supabase stop` |
 
 Background docs: `docs/TUTORFREN_BUILD_WORKFLOW.md` (security design), `docs/TECH_STACK.md`, `docs/DECISIONS.md` (choices that differ from the plan), `docs/BUILD_PROGRESS.md` (what's done).
+
+---
+
+## Google sign-in ("Continue with Google")
+
+1. Google Cloud Console → APIs & Services → **Credentials** → Create credentials → **OAuth client ID** → type **Web application**.
+   - Authorised redirect URI (local): `http://127.0.0.1:54321/auth/v1/callback`
+   - Hosted Supabase: `https://<project-ref>.supabase.co/auth/v1/callback`
+2. Local: in `supabase/config.toml` set `enabled = true` under `[auth.external.google]`, then:
+   ```bash
+   export SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID=...
+   export SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET=...
+   npx supabase stop && npx supabase start
+   ```
+   Hosted: Dashboard → Authentication → Providers → Google → paste the client ID and secret.
+3. In `apps/mobile/.env` set `EXPO_PUBLIC_GOOGLE_AUTH=1` and restart Expo with `-c`.
+   Until then the button shows "Google sign-in isn't set up yet".

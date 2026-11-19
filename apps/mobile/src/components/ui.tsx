@@ -1,6 +1,7 @@
 // Small themeable UI kit. Colours and radii come from tailwind.config.js so Stitch designs can re-skin it.
-import React from "react";
-import { ActivityIndicator, Pressable, ScrollView, Text, TextInput, type TextInputProps, View } from "react-native";
+import React, { useState } from "react";
+import { ActivityIndicator, Pressable, ScrollView, type TextInputProps, View } from "react-native";
+import { Text, TextInput } from "./AppText";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Svg, { Circle } from "react-native-svg";
 import { useTranslation } from "react-i18next";
@@ -9,7 +10,7 @@ import { setLanguage } from "../i18n";
 type TP = React.ComponentProps<typeof Text> & { variant?: "title" | "h" | "body" | "small" | "label"; className?: string };
 const TV = { title: "text-2xl font-bold text-ink", h: "text-lg font-bold text-ink", body: "text-base font-sans text-ink", small: "text-sm font-sans text-ink-soft", label: "text-sm font-medium text-ink-soft" };
 export function T({ variant = "body", className = "", ...p }: TP) {
-  return <Text {...p} className={`${TV[variant]} leading-7 ${className}`} />;
+  return <Text {...p} className={`${TV[variant]} ${className}`} />;
 }
 export function Screen({ children, scroll = true, className = "" }: { children: React.ReactNode; scroll?: boolean; className?: string }) {
   return (
@@ -37,6 +38,21 @@ export function Field({ label, className = "", ...p }: TextInputProps & { label:
     <View className="gap-1">
       <T variant="label">{label}</T>
       <TextInput {...p} accessibilityLabel={label} placeholderTextColor="#8AA0A3" className={`min-h-[52px] bg-surface border border-surface-line rounded-card px-4 py-3 text-base font-sans text-ink ${className}`} />
+    </View>
+  );
+}
+export function PasswordField({ label, className = "", ...p }: TextInputProps & { label: string; className?: string }) {
+  const { t } = useTranslation();
+  const [show, setShow] = useState(false);
+  return (
+    <View className="gap-1">
+      <T variant="label">{label}</T>
+      <View className={`flex-row items-center bg-surface border border-surface-line rounded-card ${className}`}>
+        <TextInput {...p} secureTextEntry={!show} autoCapitalize="none" autoCorrect={false} accessibilityLabel={label} placeholderTextColor="#8AA0A3" className="flex-1 min-h-[52px] px-4 py-3 text-base font-sans text-ink" />
+        <Pressable onPress={() => setShow(!show)} accessibilityRole="button" accessibilityLabel={t(show ? "auth.hide" : "auth.show")} hitSlop={8} className="px-4 min-h-[52px] justify-center active:opacity-60">
+          <Text className="text-sm font-bold text-primary-dark">{show ? `🙈 ${t("auth.hide")}` : `👁 ${t("auth.show")}`}</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }

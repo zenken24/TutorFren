@@ -32,8 +32,15 @@ const ANON = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY ?? "missing-anon-key";
 
 export function makeClient(storageKey: string): SupabaseClient {
   return createClient(SUPABASE_URL, ANON, {
-    auth: { storage: secureStorage, storageKey, autoRefreshToken: true, persistSession: true, detectSessionInUrl: false },
+    auth: { storage: secureStorage, storageKey, autoRefreshToken: true, persistSession: true, detectSessionInUrl: false, flowType: "pkce" },
   });
+}
+/** Signed storage URLs are minted inside the server runtime with its INTERNAL host (e.g. http://kong:8000),
+ *  which a phone cannot reach. Re-point them at the API URL this app already uses. */
+export function reachable(url: string | undefined): string | undefined {
+  if (!url) return url;
+  const i = url.indexOf("/storage/v1/");
+  return i >= 0 ? SUPABASE_URL + url.slice(i) : url;
 }
 export class ApiError extends Error {
   constructor(public status: number, public code: string) { super(code); }

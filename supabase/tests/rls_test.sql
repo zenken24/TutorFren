@@ -2,7 +2,7 @@
 begin;
 create extension if not exists pgtap with schema extensions;
 set search_path = public, extensions;
-select plan(22);
+select plan(25);
 
 -- synthetic users: guardian G, unlinked guardian U, students A (Rafi) and B (Nusrat)
 insert into auth.users (id, email) values
@@ -10,7 +10,8 @@ insert into auth.users (id, email) values
   ('00000000-0000-0000-0000-0000000000a1', 'g@example.invalid'), ('00000000-0000-0000-0000-0000000000a2', 'u@example.invalid');
 insert into profiles (id, role) values
   ('00000000-0000-0000-0000-00000000000a', 'student'), ('00000000-0000-0000-0000-00000000000b', 'student'),
-  ('00000000-0000-0000-0000-0000000000a1', 'guardian'), ('00000000-0000-0000-0000-0000000000a2', 'guardian');
+  ('00000000-0000-0000-0000-0000000000a1', 'guardian'), ('00000000-0000-0000-0000-0000000000a2', 'guardian')
+on conflict (id) do update set role = excluded.role; -- the sign-up trigger already made the guardian rows
 insert into students (id, nickname, grade, device_mode, status) values
   ('00000000-0000-0000-0000-00000000000a', 'Rafi (synthetic)', 5, 'shared', 'active'),
   ('00000000-0000-0000-0000-00000000000b', 'Nusrat (synthetic)', 5, 'shared', 'active');
@@ -55,6 +56,7 @@ select is((select count(*) from concept_mastery), 0::bigint, 'guardian sees no m
 select ok((select guardian_summary('00000000-0000-0000-0000-00000000000a') ? 'mastered'), 'linked guardian gets the summary');
 select ok((select guardian_summary('00000000-0000-0000-0000-00000000000a')::text not like '%canary-tiger-42%'
        and not (guardian_summary('00000000-0000-0000-0000-00000000000a') ? 'text')), 'summary has no transcript text');
+select ok((select guardian_summary('00000000-0000-0000-0000-00000000000a') ?& array['totals','chapters','active_days']), 'summary has dashboard aggregates (totals, chapters, active days)');
 select throws_ok($$select guardian_summary('00000000-0000-0000-0000-00000000000b')$$, '42501', null, 'guardian cannot summarise an unlinked child');
 
 -- unlinked guardian U
@@ -72,6 +74,13 @@ select throws_ok($$select guardian_summary('00000000-0000-0000-0000-00000000000a
 -- anon reads nothing
 reset role; set local role anon;
 select throws_ok($$select count(*) from students$$, '42501', null, 'anon can read nothing');
+
+
+reset role;
+-- sign-up trigger: a new non-student user becomes a guardian; synthetic student users do not
+insert into auth.users (id, email) values ('00000000-0000-0000-0000-0000000000c1', 'new-parent@example.invalid'), ('00000000-0000-0000-0000-0000000000c2', 'kid@students.invalid');
+select is((select role from profiles where id = '00000000-0000-0000-0000-0000000000c1'), 'guardian', 'new sign-up gets the guardian role');
+select is((select count(*)::int from profiles where id = '00000000-0000-0000-0000-0000000000c2'), 0, 'synthetic student users get no automatic guardian role');
 
 select * from finish();
 rollback;

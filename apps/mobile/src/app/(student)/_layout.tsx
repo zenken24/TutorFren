@@ -1,6 +1,7 @@
 // Student mode: five tabs. Everything in here uses ONLY the active child's client (useStudent()).
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import { Text } from "../../components/AppText";
 import { Redirect, router, Tabs } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useTranslation } from "react-i18next";

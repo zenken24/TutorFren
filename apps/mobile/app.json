@@ -45,7 +45,8 @@
         {
           "faceIDPermission": "Unlock guardian mode."
         }
-      ]
+      ],
+      "expo-web-browser"
     ],
     "scheme": "tutorfren",
     "experiments": {

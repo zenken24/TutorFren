@@ -18,25 +18,38 @@ async function user(email: string, password: string) {
 const must = <T extends { error: unknown }>(r: T) => { if (r.error) throw r.error; return r; };
 
 const g = await user(DEMO.email, DEMO.password);
-must(await sb.from("profiles").insert({ id: g, role: "guardian" }));
+must(await sb.from("profiles").upsert({ id: g, role: "guardian" })); // the sign-up trigger may already have created it
 const kids = [
   { nick: "Rafi (synthetic)", email: "rafi-demo@students.invalid", lang: "bn", voice: true, strong: true },
   { nick: "Nusrat (synthetic)", email: "nusrat-demo@students.invalid", lang: "en", voice: false, strong: false },
 ];
-const { data: concepts } = await sb.from("concepts").select("id").eq("chapter", 1).order("id");
+const { data: concepts } = await sb.from("concepts").select("id,chapter").order("chapter").order("id");
+// deterministic pseudo-random so every reset looks the same
+let seed = 7; const rnd = () => ((seed = (seed * 9301 + 49297) % 233280) / 233280);
 for (const k of kids) {
   const id = await user(k.email, crypto.randomUUID() + crypto.randomUUID());
-  must(await sb.from("profiles").insert({ id, role: "student" }));
+  must(await sb.from("profiles").upsert({ id, role: "student" }));
   must(await sb.from("students").insert({ id, nickname: k.nick, grade: 5, language: k.lang, device_mode: "shared", status: "active", assent_at: new Date().toISOString() }));
   must(await sb.from("guardian_student_links").insert({ guardian_id: g, student_id: id, is_primary: true, status: "active" }));
   const scopes = ["core_learning", "guardian_view", ...(k.voice ? ["voice_input"] : [])];
   must(await sb.from("consents").insert(scopes.map((scope) => ({ guardian_id: g, student_id: id, scope, text_version: "v1" }))));
-  const ms = (concepts ?? []).slice(0, 5).map((c, i) => ({
-    student_id: id, concept_id: c.id, evidence_count: 4,
-    mastery: k.strong ? [0.9, 0.85, 0.6, 0.35, 0.2][i] : [0.5, 0.3, 0.15, 0.1, 0.05][i],
-    confidence: 0.57, recent_errors: (k.strong ? i > 2 : i > 0) ? ["wrong_answer"] : [],
-  }));
+  // progress: Rafi is further along (chapters 1-5 started, early chapters mostly mastered); Nusrat less so
+  const reach = k.strong ? 5 : 3;
+  const ms = (concepts ?? []).filter((c) => c.chapter <= reach).map((c) => {
+    const base = k.strong ? 1.05 - c.chapter * 0.14 : 0.75 - c.chapter * 0.18;
+    const mastery = Math.max(0.05, Math.min(0.97, base + (rnd() - 0.5) * 0.4));
+    return { student_id: id, concept_id: c.id, evidence_count: 2 + Math.floor(rnd() * 5), mastery, confidence: 0.57, recent_errors: mastery < 0.5 ? ["wrong_answer"] : [] };
+  }).filter(() => rnd() > 0.15);
   must(await sb.from("concept_mastery").insert(ms));
-  must(await sb.from("session_events").insert([0, 1, 3].map((d) => ({ student_id: id, kind: "attempt", day: new Date(Date.now() - d * 864e5).toISOString().slice(0, 10) }))));
+  // activity heatmap: ~10 weeks, more often for Rafi; day granularity only
+  const events: { student_id: string; kind: string; day: string }[] = [];
+  for (let d = 0; d < 70; d++) {
+    if (rnd() < (k.strong ? 0.55 : 0.3)) {
+      const n = 1 + Math.floor(rnd() * 5);
+      const day = new Date(Date.now() - d * 864e5).toISOString().slice(0, 10);
+      for (let i = 0; i < n; i++) events.push({ student_id: id, kind: "attempt", day });
+    }
+  }
+  must(await sb.from("session_events").insert(events));
 }
 console.log(`Synthetic demo ready. Guardian sign-in: ${DEMO.email} / ${DEMO.password}`);

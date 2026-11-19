@@ -12,7 +12,7 @@ module.exports = {
         surface: { DEFAULT: "#FFFFFF", page: "#F3F7F6", line: "#DCE7E5" },
       },
       borderRadius: { card: "16px" },
-      fontFamily: { sans: ["NotoSansBengali_400Regular"], medium: ["NotoSansBengali_500Medium"], bold: ["NotoSansBengali_700Bold"] },
+      fontFamily: { sans: ["NotoSansBengali_400Regular"] }, // weights map to the Medium/Bold files in AppText.tsx
     },
   },
   plugins: [],

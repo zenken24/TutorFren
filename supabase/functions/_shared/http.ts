@@ -52,7 +52,7 @@ export function serve(route: string, handler: (req: Request, ctx: { requestId: s
 export function requireRecentAuth(token: string, maxAgeSeconds = 300) {
   try {
     const payload = JSON.parse(atob(token.split(".")[1].replace(/-/g, "+").replace(/_/g, "/")));
-    const times = (payload.amr ?? []).filter((a: { method?: string }) => a.method === "password" || a.method === "otp" || a.method === "totp")
+    const times = (payload.amr ?? []).filter((a: { method?: string }) => a.method === "password" || a.method === "otp" || a.method === "totp" || a.method === "oauth")
       .map((a: { timestamp: number }) => a.timestamp);
     if (times.length && Date.now() / 1000 - Math.max(...times) <= maxAgeSeconds) return;
   } catch { /* fall through */ }

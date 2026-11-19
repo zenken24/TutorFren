@@ -1,7 +1,8 @@
 // Ask: curriculum-grounded tutor chat with TEXTBOOK LOOKUP. "Exercise 5 question 3" -> the exact page
 // card, then step-by-step hints for that question. The chat lives in memory only (not saved on the phone).
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { KeyboardAvoidingView, Platform, ScrollView, TextInput, View } from "react-native";
+import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
+import { TextInput } from "../../components/AppText";
 import { useLocalSearchParams } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { callFn } from "../../lib/supabase";

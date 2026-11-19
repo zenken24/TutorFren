@@ -8,7 +8,7 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-na
 import { runOnJS } from "react-native-worklets";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
-import { callFn } from "../lib/supabase";
+import { callFn, reachable } from "../lib/supabase";
 import { useStudent } from "../lib/session";
 import { currentLang, type Lang, num } from "../i18n";
 import { Btn, Card, Chip, Loading, Row, T } from "./ui";
@@ -21,7 +21,8 @@ export function usePage(printedPage: number | null) {
     queryKey: ["page", child.id, printedPage], enabled: printedPage !== null, staleTime: 8 * 60_000, gcTime: 9 * 60_000,
     queryFn: async () => {
       const r = await callFn<{ pages: Record<string, Urls> }>(client, "textbook-lookup", { text: `page ${printedPage}`, language: currentLang() });
-      return r.pages[String(printedPage! + 7)] ?? {};
+      const u = r.pages[String(printedPage! + 7)] ?? {};
+      return { bn: reachable(u.bn), en: reachable(u.en) };
     },
   });
 }
