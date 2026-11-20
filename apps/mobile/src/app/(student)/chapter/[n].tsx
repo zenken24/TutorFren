@@ -17,18 +17,18 @@ export default function Chapter() {
   const recommended = ch.lessons.find((l) => badgeOf(mastery.data?.get(l.concept_id)) !== "mastered");
   const sets = blocks.filter((b) => b.chapter === ch.number && (b.kind === "let_us_do" || b.kind === "let_us_try"));
   const inline = blocks.filter((b) => b.chapter === ch.number && b.kind === "exercise");
-  const ask = (q: string) => router.push({ pathname: "/(student)/ask", params: { q, chapter: String(ch.number), k: String(Date.now()) } });
+  const ask = (q: string) => router.navigate({ pathname: "/(student)/ask", params: { q, chapter: String(ch.number), k: String(Date.now()) } });
   const pg = lang === "bn" ? "পৃষ্ঠা" : "page";
   return (
     <Screen>
-      <Row className="justify-between"><View className="flex-1"><T variant="label">{t("ch.chapter", { n: num(ch.number) })}</T><T variant="title">{title(ch, lang)}</T></View><Chip tone="plain" title={t("common.back")} onPress={() => router.push("/(student)/chapters")} /></Row>
+      <Row className="justify-between"><View className="flex-1"><T variant="label">{t("ch.chapter", { n: num(ch.number) })}</T><T variant="title">{title(ch, lang)}</T></View><Chip tone="plain" title={t("common.back")} onPress={() => (router.canGoBack() ? router.back() : router.navigate("/(student)/chapters"))} /></Row>
       <T variant="h">{t("ch.lessons")}</T>
       {ch.lessons.map((l, i) => (
         <Row key={l.id} className="items-stretch">
-          <View className="items-center w-8"><View className={`w-8 h-8 rounded-full items-center justify-center ${badgeOf(mastery.data?.get(l.concept_id)) === "mastered" ? "bg-primary" : "bg-primary-soft"}`}><T className={`font-bold ${badgeOf(mastery.data?.get(l.concept_id)) === "mastered" ? "text-white" : "text-primary-dark"}`}>{num(i + 1)}</T></View>{i < ch.lessons.length - 1 ? <View className="w-0.5 flex-1 bg-surface-line" /> : null}</View>
+          <View className="items-center w-8"><View className={`w-8 h-8 rounded-full items-center justify-center ${badgeOf(mastery.data?.get(l.concept_id)) === "mastered" ? "bg-good" : "bg-primary-soft"}`}><T className={`font-bold ${badgeOf(mastery.data?.get(l.concept_id)) === "mastered" ? "text-white" : "text-primary-dark"}`}>{num(i + 1)}</T></View>{i < ch.lessons.length - 1 ? <View className="w-0.5 flex-1 bg-surface-line" /> : null}</View>
           <View className="flex-1 pb-3">
-            <Card label={title(l, lang)} onPress={() => router.push({ pathname: "/(student)/lesson/[id]", params: { id: l.id } })} className={recommended?.id === l.id ? "border-primary" : ""}>
-              {recommended?.id === l.id ? <Chip title={`★ ${t("ch.recommended")}`} /> : null}
+            <Card label={title(l, lang)} onPress={() => router.push({ pathname: "/(student)/lesson/[id]", params: { id: l.id } })} className={recommended?.id === l.id ? "border-hot" : ""}>
+              {recommended?.id === l.id ? <Chip tone="hot" title={t("ch.recommended")} /> : null}
               <T variant="h">{title(l, lang)}</T>
               <Row className="justify-between"><MasteryBadge kind={badgeOf(mastery.data?.get(l.concept_id))} /><T variant="small">{t("ch.pages", { a: num(l.printed_pages[0]), b: num(l.printed_pages[1]) })}</T></Row>
             </Card>

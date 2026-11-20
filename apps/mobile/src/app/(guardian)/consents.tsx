@@ -42,7 +42,7 @@ function ChildConsents({ child }: { child: GChild }) {
           <View key={sc} className="border-t border-surface-line pt-3 gap-1">
             <Row className="justify-between">
               <T className="flex-1 font-bold">{t(`consent.${sc}`)}</T>
-              <Switch accessibilityLabel={t(`consent.${sc}`)} value={!!r} disabled={busy === sc || (sc === "core_learning" && !!r)} trackColor={{ true: "#0F766E" }} onValueChange={(v) => toggle(sc, v)} />
+              <Switch accessibilityLabel={t(`consent.${sc}`)} value={!!r} disabled={busy === sc || (sc === "core_learning" && !!r)} trackColor={{ true: "#035B7B" }} onValueChange={(v) => toggle(sc, v)} />
             </Row>
             <T variant="small" className="text-ink">{t(`cons.${sc}.what`)}</T>
             <T variant="small">• {t(`cons.${sc}.stored`)}</T>

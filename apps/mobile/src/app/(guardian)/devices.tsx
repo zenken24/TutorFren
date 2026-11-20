@@ -1,5 +1,5 @@
 // Devices: for each child, every phone it is set up on, with a plain-language status:
-//   ✅ paired (shared phone / own phone, last used)  ⏳ waiting for a pairing code  ⛔ removed
+//   paired (shared phone / own phone, last used) · waiting for a pairing code · removed
 // Also: use this phone for the child, child PIN (shared phones), and pairing codes for the child's own phone.
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
@@ -13,7 +13,7 @@ import { type GChild, useChildren } from "../../lib/guardian";
 import { useStepUp } from "../../components/GuardianGate";
 import { GHeader } from "../../components/GuardianMenu";
 import { num } from "../../i18n";
-import { Btn, Card, Chip, errorKey, Field, Loading, Notice, Row, Screen, T } from "../../components/ui";
+import { Btn, Card, Chip, errorKey, Field, Loading, Notice, Row, Screen, Status, T } from "../../components/ui";
 
 type Device = { device_id: string; mode: string; created_at: string; last_seen_at: string | null; revoked_at: string | null };
 const day = (iso: string | null) => (iso ? num(iso.slice(0, 10)) : "—");
@@ -45,12 +45,12 @@ function ChildDevices({ child }: { child: GChild }) {
       <Row className="justify-between"><T variant="h">{child.nickname}</T><Chip tone="plain" title={t(child.device_mode === "shared" ? "child.thisPhone" : "child.ownPhone")} /></Row>
       {msg ? <Notice text={msg} /> : null}
       {devices.isLoading ? <Loading /> : (devices.data ?? []).length === 0 ? (
-        <View className="bg-practice-soft rounded-card p-3 gap-1"><T className="font-bold text-practice">⏳ {t("dev.none")}</T><T variant="small">{t(child.device_mode === "shared" ? "dev.noneShared" : "dev.noneOwn")}</T></View>
+        <View className="bg-practice-soft rounded-card p-3 gap-1"><Status tone="wait" text={t("dev.none")} /><T variant="small">{t(child.device_mode === "shared" ? "dev.noneShared" : "dev.noneOwn")}</T></View>
       ) : devices.data!.map((d) => {
         const here = d.device_id === s.deviceId;
         return (
           <View key={d.device_id} className={`rounded-card p-3 gap-1 ${d.revoked_at ? "bg-surface-page" : "bg-primary-tint"}`}>
-            <T className="font-bold">{d.revoked_at ? `⛔ ${t("dev.removed")}` : `✅ ${t("dev.paired")}`} · {t(d.mode === "shared" ? "dev.sharedPhone" : "dev.ownPhone")}{here ? ` (${t("dev.thisOne")})` : ""}</T>
+            <Status tone={d.revoked_at ? "off" : "ok"} text={`${t(d.revoked_at ? "dev.removed" : "dev.paired")} · ${t(d.mode === "shared" ? "dev.sharedPhone" : "dev.ownPhone")}${here ? ` (${t("dev.thisOne")})` : ""}`} />
             <T variant="small">{d.revoked_at ? t("dev.removedHelp", { d: day(d.revoked_at) }) : t(d.mode === "shared" ? "dev.pairedShared" : "dev.pairedOwn", { name: child.nickname })}</T>
             <T variant="small">{t("dev.since", { a: day(d.created_at), b: day(d.last_seen_at) })}</T>
             {!d.revoked_at ? <Btn kind="amber" loading={busy === d.device_id} title={t("child.revoke")} onPress={() => run(d.device_id, async () => {

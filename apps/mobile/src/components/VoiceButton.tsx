@@ -22,7 +22,8 @@ export function VoiceButton({ onTranscript }: { onTranscript: (text: string) => 
   const { t } = useTranslation();
   const { client } = useStudent();
   const consent = useVoiceConsent();
-  const rec = useAudioRecorder({ ...RecordingPresets.LOW_QUALITY, sampleRate: 16000, numberOfChannels: 1, bitRate: 32000 });
+  // HIGH_QUALITY = AAC in an .m4a file on Android and iOS (LOW_QUALITY is AMR/3GP on Android, which Gemini cannot read)
+  const rec = useAudioRecorder({ ...RecordingPresets.HIGH_QUALITY, sampleRate: 16000, numberOfChannels: 1, bitRate: 32000 });
   const [state, setState] = useState<"idle" | "recording" | "working">("idle");
   const [msg, setMsg] = useState<string | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -61,8 +62,8 @@ export function VoiceButton({ onTranscript }: { onTranscript: (text: string) => 
   };
   return (
     <>
-      <Btn kind={state === "recording" ? "amber" : "soft"} loading={state === "working"} title={state === "recording" ? `■ ${t("voice.stop")}` : `🎤 ${t("voice.start")}`} onPress={state === "recording" ? stop : start} />
-      {state === "working" ? <T variant="small">{t("voice.working")}</T> : msg ? <T variant="small" className="text-practice">{msg}</T> : null}
+      <Btn kind={state === "recording" ? "amber" : "soft"} loading={state === "working"} icon={state === "recording" ? "stop" : "mic"} title={t(state === "recording" ? "voice.stop" : "voice.start")} onPress={state === "recording" ? stop : start} />
+      {state === "working" ? <T variant="small">{t("voice.working")}</T> : msg ? <T variant="small" className="text-practice-text">{msg}</T> : null}
     </>
   );
 }

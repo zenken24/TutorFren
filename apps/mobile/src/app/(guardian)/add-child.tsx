@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { Pressable } from "react-native";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { useQueryClient } from "@tanstack/react-query";
 import { callFn } from "../../lib/supabase";
 import { useGuardian } from "../../lib/session";
-import { Btn, Card, Chip, errorKey, Field, Notice, Row, Screen, T } from "../../components/ui";
+import { Btn, Card, Chip, errorKey, Field, Notice, Radio, Row, Screen, T } from "../../components/ui";
 
 export default function AddChild() {
   const { t } = useTranslation();
@@ -36,8 +37,12 @@ export default function AddChild() {
       </Card>
       <Card>
         <T variant="h">{t("add.deviceQ", { name })}</T>
-        <Btn kind={mode === "shared" ? "primary" : "ghost"} title={`${mode === "shared" ? "◉" : "○"} ${t("add.shared")}`} onPress={() => setMode("shared")} />
-        <Btn kind={mode === "own" ? "primary" : "ghost"} title={`${mode === "own" ? "◉" : "○"} ${t("add.own")}`} onPress={() => setMode("own")} />
+        {(["shared", "own"] as const).map((m) => (
+          <Pressable key={m} onPress={() => setMode(m)} accessibilityRole="radio" accessibilityState={{ checked: mode === m }} accessibilityLabel={t(`add.${m}`)}
+            className={`flex-row items-center gap-3 min-h-[52px] px-4 py-3 rounded-card border ${mode === m ? "border-primary bg-primary-tint" : "border-surface-line"}`}>
+            <Radio on={mode === m} /><T className="flex-1">{t(`add.${m}`)}</T>
+          </Pressable>
+        ))}
       </Card>
       <Btn title={t("add.create")} onPress={create} loading={busy} disabled={!nickname.trim() || !mode} />
       <Btn kind="ghost" title={t("common.cancel")} onPress={() => router.back()} />

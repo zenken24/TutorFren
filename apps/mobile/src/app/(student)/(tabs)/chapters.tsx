@@ -1,10 +1,10 @@
 import React from "react";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
-import { useMastery } from "../../lib/hooks";
-import { chapters, title } from "../../lib/textbook";
-import { currentLang, num } from "../../i18n";
-import { Bar, Card, Row, Screen, T } from "../../components/ui";
+import { useMastery } from "../../../lib/hooks";
+import { chapters, title } from "../../../lib/textbook";
+import { currentLang, num } from "../../../i18n";
+import { Bar, Card, Row, Screen, T } from "../../../components/ui";
 
 export default function Chapters() {
   const { t } = useTranslation();

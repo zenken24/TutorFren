@@ -11,15 +11,15 @@ import { useGuardian, useSession } from "../../lib/session";
 import { usePrimaryChildIds, useChildren } from "../../lib/guardian";
 import { useStepUp } from "../../components/GuardianGate";
 import { GHeader } from "../../components/GuardianMenu";
-import { Btn, Card, errorKey, Field, Loading, Notice, Row, Screen, T } from "../../components/ui";
+import { Btn, Card, errorKey, Field, Loading, Notice, Radio, Row, Screen, T } from "../../components/ui";
 
 type Target = { kind: "guardian" } | { kind: "child"; id: string; name: string };
 const same = (a: Target | null, b: Target) => !!a && a.kind === b.kind && (a.kind === "guardian" || (b.kind === "child" && a.id === b.id));
 function Option({ value, title, help, selected, onPick }: { value: Target; title: string; help: string; selected: Target | null; onPick: (v: Target) => void }) {
   const on = same(selected, value);
   return (
-    <Card onPress={() => onPick(value)} label={title} className={on ? "border-practice bg-practice-soft" : ""}>
-      <Row><T className="text-xl">{on ? "◉" : "○"}</T><T className="flex-1 font-bold">{title}</T></Row>
+    <Card onPress={() => onPick(value)} label={title} className={on ? "border-danger bg-danger-soft" : ""}>
+      <Row><Radio on={on} /><T className="flex-1 font-bold">{title}</T></Row>
       <T variant="small">{help}</T>
     </Card>
   );
@@ -76,12 +76,12 @@ export default function DeleteAccount() {
         </>
       )}
       {target ? (
-        <Card className="border-practice">
-          <Notice text={target.kind === "guardian" ? t("del.confirmGuardian") : t("child.delete1", { name: target.name })} />
+        <Card className="border-danger">
+          <Notice tone="danger" text={target.kind === "guardian" ? t("del.confirmGuardian") : t("child.delete1", { name: target.name })} />
           <Field label={t("child.delete2")} value={typed} onChangeText={setTyped} autoCapitalize="characters" autoCorrect={false} />
           <View className="flex-row gap-2">
             <Btn className="flex-1" kind="ghost" title={t("common.cancel")} onPress={() => { setTarget(null); setTyped(""); }} />
-            <Btn className="flex-1" kind="amber" loading={busy} disabled={typed !== "DELETE"} title={t("child.delete")} onPress={del} />
+            <Btn className="flex-1" kind="danger" icon="trash" loading={busy} disabled={typed !== "DELETE"} title={t("child.delete")} onPress={del} />
           </View>
         </Card>
       ) : null}

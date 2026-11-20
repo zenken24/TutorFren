@@ -12,8 +12,9 @@ serve("shared-device-enroll", async (req, ctx) => {
   if (!(await hasConsent(admin, b.student_id, "core_learning"))) throw new HttpError(403, "consent_required");
   const { data: st } = await admin.from("students").select("device_mode").eq("id", b.student_id).single();
   if (st?.device_mode !== "shared") throw new HttpError(409, "not_shared_mode");
-  const { data: dev } = await admin.from("devices").select("guardian_id,student_id").eq("device_id", b.device_id).maybeSingle();
-  if (dev && (dev.guardian_id !== user.id || dev.student_id !== b.student_id)) throw new HttpError(403, "forbidden");
+  // the same phone may hold several children (siblings); each (phone, child) pair belongs to one guardian
+  const { data: dev } = await admin.from("devices").select("guardian_id").eq("device_id", b.device_id).eq("student_id", b.student_id).maybeSingle();
+  if (dev && dev.guardian_id !== user.id) throw new HttpError(403, "forbidden");
   const session = await mintStudentSession(admin, b.student_id);
   await admin.from("devices").upsert({ device_id: b.device_id, student_id: b.student_id, guardian_id: user.id, mode: "shared", last_seen_at: new Date().toISOString(), revoked_at: null });
   await audit(admin, user.id, "shared_device_enrolled", b.student_id);

@@ -2,15 +2,15 @@
 // card, then step-by-step hints for that question. The chat lives in memory only (not saved on the phone).
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
-import { TextInput } from "../../components/AppText";
+import { TextInput } from "../../../components/AppText";
 import { useLocalSearchParams } from "expo-router";
 import { useTranslation } from "react-i18next";
-import { callFn } from "../../lib/supabase";
-import { useStudent } from "../../lib/session";
-import { currentLang, num } from "../../i18n";
-import { Btn, Chip, errorKey, T } from "../../components/ui";
-import { PageCard } from "../../components/PageCard";
-import { VoiceButton } from "../../components/VoiceButton";
+import { callFn } from "../../../lib/supabase";
+import { useStudent } from "../../../lib/session";
+import { currentLang, num } from "../../../i18n";
+import { Btn, Chip, errorKey, T } from "../../../components/ui";
+import { PageCard } from "../../../components/PageCard";
+import { VoiceButton } from "../../../components/VoiceButton";
 
 interface Cand { block_id: string; kind: string; chapter: number; label: string; question: number | null; sub: string | null; printed_page: number; pdf_pages: number[]; question_text: string | null; source_label: string }
 type Lookup = { status: "resolved"; match: Cand; candidates: Cand[] } | { status: "ambiguous"; candidates: Cand[] } | { status: "not_found"; parsed: unknown; nearest: Cand[] };
@@ -86,16 +86,16 @@ export default function Ask() {
         ) : (
           <View key={m.id} className={`max-w-[88%] rounded-card p-3 gap-2 ${m.who === "me" ? "self-end bg-primary" : "self-start bg-surface border border-surface-line"}`}>
             <T className={m.who === "me" ? "text-white" : ""}>{m.text}</T>
-            {m.sources?.length ? <View className="flex-row flex-wrap gap-1">{m.sources.map((s, i) => <Chip key={i} tone="plain" title={s.label} />)}</View> : null}
-            {m.unsure ? <T variant="small" className="text-practice">{t("ask.teacher")}</T> : null}
+            {m.sources?.length ? <View className="flex-row flex-wrap gap-1">{m.sources.map((s, i) => <Chip key={i} tone="blue" title={s.label} />)}</View> : null}
+            {m.unsure ? <T variant="small" className="text-practice-text">{t("ask.teacher")}</T> : null}
           </View>
         ))}
         {busy ? <T variant="small">{t("ask.thinking")}</T> : null}
       </ScrollView>
       <View className="p-3 gap-2 bg-surface border-t border-surface-line">
-        {topic ? <View className="flex-row"><Chip tone="teal" title={`${candTitle(topic)}  ✕`} onPress={() => setTopic(null)} /></View> : null}
+        {topic ? <View className="flex-row"><Chip tone="teal" title={`${candTitle(topic)}  ×`} onPress={() => setTopic(null)} /></View> : null}
         <View className="flex-row gap-2 items-end">
-          <TextInput value={input} onChangeText={setInput} multiline placeholder={t("ask.placeholder")} placeholderTextColor="#8AA0A3" accessibilityLabel={t("ask.title")} maxLength={800}
+          <TextInput value={input} onChangeText={setInput} multiline placeholder={t("ask.placeholder")} placeholderTextColor="#8FA6AD" accessibilityLabel={t("ask.title")} maxLength={800}
             className="flex-1 min-h-[52px] max-h-32 bg-surface-page border border-surface-line rounded-card px-4 py-3 text-base font-sans text-ink" />
           <Btn title={t("common.send")} onPress={() => send(input)} disabled={!input.trim() || busy} />
         </View>

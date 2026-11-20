@@ -17,7 +17,7 @@ export default function Pair() {
     setBusy(true); setMsg(null);
     try {
       const r = await callFn<{ access_token: string; refresh_token: string; student_id: string }>(null, "pairing-redeem", { code, device_id: s.deviceId });
-      await s.enrolChild({ id: r.student_id, nickname: name.trim() || "★" }, r);
+      await s.enrolChild({ id: r.student_id, nickname: name.trim() || "—" }, r);
       setCode(""); // the code is never stored
       router.replace("/");
     } catch (e) {

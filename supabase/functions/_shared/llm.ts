@@ -21,7 +21,7 @@ export function pickApiKey(appEnv = env("APP_ENV") ?? "dev"): string {
 }
 let client: GoogleGenAI | null = null;
 function ai(): GoogleGenAI {
-  return (client ??= new GoogleGenAI({ apiKey: pickApiKey() }));
+  return (client ??= new GoogleGenAI({ apiKey: pickApiKey(), apiVersion: "v1beta" })); // system instructions need v1beta
 }
 const model = () => env("GEMINI_MODEL") ?? "gemini-flash-latest";
 const embedModel = () => env("GEMINI_EMBED_MODEL") ?? "gemini-embedding-001";
@@ -38,7 +38,8 @@ async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
     } catch (e) {
       const status = e instanceof ApiError ? e.status : (e as { status?: number; statusCode?: number })?.status ?? (e as { statusCode?: number })?.statusCode ?? 0;
       if (status === 400) throw new LlmBlocked("blocked_or_invalid");
-      if (attempt >= 1 || !(status === 429 || status >= 500)) throw new LlmUnavailable(`llm_error_${status}`);
+      // 429 = quota used up: retrying cannot help, so fail fast and let the caller answer with the fallback
+      if (attempt >= 1 || status < 500) throw new LlmUnavailable(`llm_error_${status}`);
       await new Promise((r) => setTimeout(r, 800 * (attempt + 1)));
     }
   }
@@ -54,9 +55,10 @@ async function interact(system: string, input: Input, schema?: unknown, maxToken
       input,
       store: false, // never keep children's prompts on the provider side
       safety_settings: SAFETY,
-      generation_config: { max_output_tokens: maxTokens },
+      // low thinking: fast replies, and the thinking does not eat the output budget (which cut JSON off)
+      generation_config: { max_output_tokens: Math.max(maxTokens, 1024), thinking_level: (env("GEMINI_THINKING") ?? "low") as "low" },
       ...(schema ? { response_format: { type: "text" as const, mime_type: "application/json", schema } } : {}),
-    }, { timeout_ms: 25_000 })
+    }, { timeout_ms: 15_000 })
   );
   const text = res.output_text?.trim();
   if (!text) throw new LlmBlocked("empty");

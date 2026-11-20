@@ -44,7 +44,7 @@ export default function Settings() {
         {msg ? <Notice text={msg} /> : null}
         <Row className="flex-wrap">{(kids.data ?? []).map((c) => <Btn key={c.id} kind="ghost" loading={busy === c.id} title={c.nickname} onPress={() => exportFor(c.id, c.nickname)} />)}</Row>
         {exported ? <><Notice tone="teal" text={t("child.exported", { n: num((exported.json.match(/"id"/g) ?? []).length) })} />
-          <RNTextInput value={exported.json} multiline editable={false} selectTextOnFocus style={{ maxHeight: 160, fontSize: 11, color: "#4B6468", backgroundColor: "#F3F7F6", borderRadius: 12, padding: 8 }} /></> : null}
+          <RNTextInput value={exported.json} multiline editable={false} selectTextOnFocus style={{ maxHeight: 160, fontSize: 11, color: "#4A6670", backgroundColor: "#F4FAFB", borderRadius: 12, padding: 8 }} /></> : null}
       </Card>
       <Card><T variant="h">{t("set.privacy")}</T><T variant="small">{t("set.privacyText")}</T></Card>
       <Btn kind="amber" title={t("set.signout")} onPress={async () => { await s.signOutGuardian(); router.replace("/"); }} />

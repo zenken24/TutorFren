@@ -6,9 +6,10 @@ import Svg, { Circle, G, Rect } from "react-native-svg";
 import { useTranslation } from "react-i18next";
 import { num } from "../i18n";
 import { Row, T } from "./ui";
+import { Text } from "./AppText";
 
-export const COLORS = { mastered: "#0F766E", progress: "#F59E0B", notStarted: "#DCE7E5", empty: "#EEF3F2" };
-const HEAT = ["#EEF3F2", "#B9E6DF", "#6CC7B8", "#1F9E8D", "#0F766E"];
+export const COLORS = { mastered: "#167B7B", progress: "#FFAA00", notStarted: "#D6E6EA", empty: "#E8F2F4" }; // seaweed / chrome yellow
+const HEAT = ["#E8F2F4", "#BFE6E3", "#7CC5C0", "#167B7B", "#035B7B"]; // seaweed -> sapphire
 
 function useWidth(): [number, (e: LayoutChangeEvent) => void] {
   const [w, setW] = useState(0);
@@ -35,7 +36,7 @@ export function Heatmap({ days, weeks = 12 }: { days: { day: string; n: number }
       {cell ? (
         <Row className="items-start">
           <View style={{ width: labelW }}>
-            {rowLabels.map((l, i) => <View key={i} style={{ height: cell + gap, justifyContent: "center" }}><T variant="small" className="text-[10px]" numberOfLines={1}>{l}</T></View>)}
+            {rowLabels.map((l, i) => <View key={i} style={{ height: cell + gap, justifyContent: "center", paddingBottom: gap }}><Text numberOfLines={1} style={{ fontSize: 10, lineHeight: Math.min(cell, 16), color: "#4A6670" }}>{l}</Text></View>)}
           </View>
           <Svg width={(cell + gap) * weeks} height={(cell + gap) * 7} accessibilityLabel={t("dash.heatA11y", { n: num(activeDays) })}>
             {Array.from({ length: weeks }).map((_, w) => (
@@ -50,14 +51,14 @@ export function Heatmap({ days, weeks = 12 }: { days: { day: string; n: number }
           </Svg>
         </Row>
       ) : null}
-      <Row className="justify-between">
+      <View className="gap-2">
         <T variant="small">{t("dash.activeDays", { n: num(activeDays), w: num(weeks) })}</T>
         <Row className="gap-1">
           <T variant="small" className="text-[11px]">{t("dash.less")}</T>
           {HEAT.map((c) => <View key={c} style={{ width: 11, height: 11, borderRadius: 2, backgroundColor: c }} />)}
           <T variant="small" className="text-[11px]">{t("dash.more")}</T>
         </Row>
-      </Row>
+      </View>
     </View>
   );
 }
@@ -80,8 +81,7 @@ export function Donut({ parts, center, sub }: { parts: { label: string; value: n
               ? <Circle key={p.label} cx={size / 2} cy={size / 2} r={r} stroke={p.color} strokeWidth={stroke} fill="none" strokeDasharray={`${lens[i]} ${c - lens[i]}`} strokeDashoffset={-starts[i]} />
               : null))}
           </Svg>
-          <T variant="title" className="text-primary-dark">{center}</T>
-          <T variant="small" className="text-center px-6" numberOfLines={2}>{sub}</T>
+          <View style={{ width: size - stroke * 2.4, alignItems: "center" }}><T variant="title" className="text-primary-dark text-center">{center}</T><T variant="small" className="text-center" numberOfLines={2}>{sub}</T></View>
         </View>
       ) : null}
       <View className="w-full gap-1.5">

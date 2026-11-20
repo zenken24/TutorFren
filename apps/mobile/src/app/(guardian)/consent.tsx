@@ -44,13 +44,13 @@ export default function Consent() {
       {SCOPES.map((sc) => (
         <Card key={sc}>
           <Row className="justify-between"><T variant="h" className="flex-1">{t(`consent.${sc}`)}</T>
-            <Switch accessibilityLabel={t(`consent.${sc}`)} value={scopes[sc]} disabled={sc === "core_learning"} onValueChange={(v) => setScopes({ ...scopes, [sc]: v })} trackColor={{ true: "#0F766E" }} /></Row>
+            <Switch accessibilityLabel={t(`consent.${sc}`)} value={scopes[sc]} disabled={sc === "core_learning"} onValueChange={(v) => setScopes({ ...scopes, [sc]: v })} trackColor={{ true: "#035B7B" }} /></Row>
           <T variant="small">{t(`cons.${sc}.what`)}</T>
           <T variant="small">• {t(`cons.${sc}.stored`)}</T>
         </Card>
       ))}
       <Card>
-        <Row className="justify-between"><View className="flex-1"><T>{t("consent.assent", { name })}</T></View><Switch accessibilityLabel="assent" value={assent} onValueChange={setAssent} trackColor={{ true: "#0F766E" }} /></Row>
+        <Row className="justify-between"><View className="flex-1"><T>{t("consent.assent", { name })}</T></View><Switch accessibilityLabel="assent" value={assent} onValueChange={setAssent} trackColor={{ true: "#035B7B" }} /></Row>
       </Card>
       <Btn title={t("consent.agree")} onPress={save} loading={busy} disabled={!assent} />
       <Btn kind="ghost" title={t("common.cancel")} onPress={() => router.back()} />

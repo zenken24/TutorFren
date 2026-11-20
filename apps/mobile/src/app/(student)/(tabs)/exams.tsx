@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { callFn } from "../../lib/supabase";
-import { useStudent } from "../../lib/session";
-import { chapters, title } from "../../lib/textbook";
-import { currentLang, num } from "../../i18n";
-import { Btn, Card, Chip, errorKey, Field, Loading, Notice, Row, Screen, T } from "../../components/ui";
+import { callFn } from "../../../lib/supabase";
+import { useStudent } from "../../../lib/session";
+import { chapters, title } from "../../../lib/textbook";
+import { currentLang, num } from "../../../i18n";
+import { Btn, Card, Chip, errorKey, Field, Loading, Notice, Row, Screen, T } from "../../../components/ui";
 
 interface Plan { exam_name: string; exam_date: string; workbook: { item_id: string; concept: string; chapter: number; marks: number; prompt: string }[]; routine: { date: string; focus: string; concepts: string[]; read_from_book: string[] }[] }
 const digits = (s: string) => s.replace(/[০-৯]/g, (d) => String("০১২৩৪৫৬৭৮৯".indexOf(d)));

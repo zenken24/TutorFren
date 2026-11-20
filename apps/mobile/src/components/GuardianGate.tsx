@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import { useSession } from "../lib/session";
 import { AUTO_LOCK_MS, deviceLockAvailable, fails, hasGuardianPin, MAX_FAILS, setGuardianPin, unlockWithDevice, unlockWithPin } from "../lib/lock";
 import { Btn, Card, Field, Notice, PasswordField, Screen, T } from "./ui";
+import { Icon } from "./Icon";
 import { GoogleButton, OrLine } from "./GoogleButton";
 
 type Guarded = <T>(fn: () => Promise<T>) => Promise<T>;
@@ -71,7 +72,8 @@ export function GuardianGate({ children }: { children: React.ReactNode }) {
     const configured = hasPin || hasDevice;
     return (
       <Screen>
-        <T variant="title">🔒 {t(configured ? "lock.title" : "lock.setup")}</T>
+        <Icon name="lock" size={36} color="#024560" />
+        <T variant="title">{t(configured ? "lock.title" : "lock.setup")}</T>
         {!configured ? <T variant="small">{t("lock.setupHelp")}</T> : null}
         {msg ? <Notice text={msg} /> : null}
         {hasDevice ? <Btn title={t(configured ? "lock.unlock" : "lock.useDevice")} onPress={tryDevice} /> : null}

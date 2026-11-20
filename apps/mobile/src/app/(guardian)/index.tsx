@@ -11,6 +11,7 @@ import { type Summary, useChildren } from "../../lib/guardian";
 import { chapters as bookChapters } from "../../lib/textbook";
 import { currentLang, num } from "../../i18n";
 import { GHeader } from "../../components/GuardianMenu";
+import { OpenChild } from "../../components/OpenChild";
 import { ChapterBars, COLORS, Donut, Heatmap } from "../../components/charts";
 import { Btn, Card, Chip, Loading, Notice, Row, Screen, T } from "../../components/ui";
 
@@ -45,7 +46,7 @@ export default function Dashboard() {
       <T variant="title" className="text-primary-dark">{t("dash.welcome")}</T>
 
       {kids.isLoading ? <Loading /> : list.length === 0 ? (
-        <Card><T>{t("g.none")}</T><Btn title={`＋ ${t("g.add")}`} onPress={() => router.push("/(guardian)/add-child")} /></Card>
+        <Card><T>{t("g.none")}</T><Btn icon="plus" title={t("g.add")} onPress={() => router.push("/(guardian)/add-child")} /></Card>
       ) : (
         <>
           {list.length > 1 ? (
@@ -53,6 +54,8 @@ export default function Dashboard() {
               {list.map((c) => <Chip key={c.id} tone={c.id === child?.id ? "teal" : "plain"} title={c.nickname} onPress={() => setSel(c.id)} />)}
             </View>
           ) : null}
+
+          {child ? <OpenChild key={child.id} child={child} /> : null}
 
           {child && child.status !== "active" ? (
             <Card><Notice text={t("dash.pending", { name: child.nickname })} />
@@ -67,10 +70,10 @@ export default function Dashboard() {
               </Card>
 
               <T variant="title">{t("child.summary")}</T>
-              <Row className="gap-3">
-                <Card className="flex-1 items-center"><T variant="title" className="text-primary-dark">{num(s.totals.mastered)}</T><T variant="small" className="text-center">{t("child.mastered")}</T></Card>
-                <Card className="flex-1 items-center"><T variant="title" className="text-practice">{num(s.totals.in_progress)}</T><T variant="small" className="text-center">{t("dash.inProgress")}</T></Card>
-                <Card className="flex-1 items-center"><T variant="title">{num(s.sessions_this_week)}</T><T variant="small" className="text-center">{t("child.sessions")}</T></Card>
+              <Row className="gap-3 items-stretch">
+                <Card className="flex-1 items-center justify-center"><T variant="title" className="text-primary-dark">{num(s.totals.mastered)}</T><T variant="small" className="text-center">{t("child.mastered")}</T></Card>
+                <Card className="flex-1 items-center justify-center"><T variant="title" className="text-practice-text">{num(s.totals.in_progress)}</T><T variant="small" className="text-center">{t("dash.inProgress")}</T></Card>
+                <Card className="flex-1 items-center justify-center"><T variant="title" className="text-info-text">{num(s.sessions_this_week)}</T><T variant="small" className="text-center">{t("child.sessions")}</T></Card>
               </Row>
 
               <Card>
@@ -99,7 +102,7 @@ export default function Dashboard() {
                 <T variant="h">{t("child.suggested")}</T>
                 {names(s.suggested_practice).length ? <View className="flex-row flex-wrap gap-2">{names(s.suggested_practice).map((x) => <Chip key={x} tone="amber" title={x} />)}</View> : <T variant="small">{t("child.nothing")}</T>}
               </Card>
-              <T variant="small" className="text-center">{t("dash.privacyNote")}</T>
+              <Notice tone="blue" text={t("dash.privacyNote")} />
             </>
           ) : <Notice text={t("common.error")} />}
         </>

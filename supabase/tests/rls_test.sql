@@ -2,7 +2,7 @@
 begin;
 create extension if not exists pgtap with schema extensions;
 set search_path = public, extensions;
-select plan(25);
+select plan(27);
 
 -- synthetic users: guardian G, unlinked guardian U, students A (Rafi) and B (Nusrat)
 insert into auth.users (id, email) values
@@ -47,6 +47,11 @@ select throws_ok($$update students set grade = 6$$, '42501', null, 'student cann
 select lives_ok($$update students set language = 'en' where id = '00000000-0000-0000-0000-00000000000a'$$, 'student can change own language');
 select throws_ok($$select guardian_summary('00000000-0000-0000-0000-00000000000a')$$, '42501', null, 'student (even with user_metadata.role=guardian) cannot call guardian_summary');
 select throws_ok($$select count(*) from session_events$$, '42501', null, 'session events are server-only');
+
+-- practice answers never reach the phone (checked only inside tutor-turn)
+select pg_temp.login('00000000-0000-0000-0000-00000000000a');
+select throws_ok($$select answer from items limit 1$$, '42501', null, 'student cannot read practice answers');
+select lives_ok($$select id, prompt, hints from items limit 1$$, 'student can read practice questions');
 
 -- linked guardian G
 select pg_temp.login('00000000-0000-0000-0000-0000000000a1');

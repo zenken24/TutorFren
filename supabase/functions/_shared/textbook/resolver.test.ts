@@ -68,7 +68,7 @@ Deno.test("page only -> page card", () => {
   const r = R.lookup("open page 23", "en");
   assert(r.status === "resolved" && r.match.printed_page === 23 && r.match.pdf_pages[0] === 30);
   const b = R.lookup("পৃষ্ঠা ৫", "bn");
-  assert(b.status === "resolved" && b.match.pdf_pages[0] === 12 && b.match.label === "পৃষ্ঠা 5");
+  assert(b.status === "resolved" && b.match.pdf_pages[0] === 12 && b.match.label === "পৃষ্ঠা ৫");
 });
 
 Deno.test("ambiguous: chapter 8 has three 'Let us do' sets", () => {
@@ -116,7 +116,7 @@ Deno.test("language: bn request returns Bangla labels and chapter titles", () =>
   if (r.status === "resolved") {
     assertEquals(r.match.label, "নিজে করি");
     assertEquals(r.match.chapter_title, "দশমিক ভগ্নাংশ");
-    assert(r.match.source_label.includes("অধ্যায় 5"));
+    assert(r.match.source_label.includes("অধ্যায় ৫")); // Bangla digits in Bangla mode
   }
 });
 
@@ -181,4 +181,11 @@ Deno.test("index: every inline Exercise/Task (and each sub-item) resolves via 'p
     }
   }
   assert(n > 500, String(n));
+});
+
+Deno.test("language: question text is never shown in the other language", () => {
+  for (const b of index.blocks) for (const q of b.questions) {
+    const bn = R.lookup(`পৃষ্ঠা ${q.printed_page} প্রশ্ন ${q.number}`, "bn");
+    if (bn.status === "resolved" && bn.match.question_text && q.text_en && !q.text_bn) throw new Error(`English text leaked into Bangla for ${b.id}`);
+  }
 });

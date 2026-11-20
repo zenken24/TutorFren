@@ -26,7 +26,7 @@ describe("client separation (shared phone)", () => {
   });
   it("switching user clears the query cache and locks guardian mode", () => {
     const s = read(path.join(src, "lib", "session.tsx"));
-    expect(s).toMatch(/async selectChild\(id\) \{\s*setUnlocked\(false\);[^\n]*\s*qc\.clear\(\)/);
+    expect(s).toMatch(/async selectChild\(id[^)]*\) \{\s*setUnlocked\(false\);[^\n]*\s*qc\.clear\(\)/);
     expect(s).toMatch(/switchUser\(\) \{ qc\.clear\(\); setActive\(null\); setUnlocked\(false\); \}/);
   });
 });

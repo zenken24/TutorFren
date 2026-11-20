@@ -25,6 +25,7 @@ export function bnStyle(style: TextProps["style"], forInput = false): TextStyle 
     s.lineHeight = Math.max(typeof s.lineHeight === "number" ? s.lineHeight : 0, Math.round(size * 1.6));
   }
   if (Platform.OS === "android") s.includeFontPadding = true;
+  if (!forInput && s.flexShrink == null && s.flex == null && s.flexGrow == null) s.flexShrink = 1; // wrap instead of running off-screen
   return s;
 }
 

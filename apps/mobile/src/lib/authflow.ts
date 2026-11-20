@@ -9,6 +9,6 @@ export function useFinishGuardianSignIn() {
     await resetLock();
     await s.refreshGuardian();
     s.setGuardianUnlocked(true); // a fresh sign-in counts as unlocking
-    router.replace("/(guardian)");
+    router.replace("/"); // -> "Who's using TutorFren?"
   };
 }

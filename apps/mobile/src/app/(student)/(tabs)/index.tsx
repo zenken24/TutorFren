@@ -4,12 +4,13 @@ import { View } from "react-native";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
-import { callFn } from "../../lib/supabase";
-import { useStudent } from "../../lib/session";
-import { useMastery } from "../../lib/hooks";
-import { lessonByConcept, title } from "../../lib/textbook";
-import { currentLang, num } from "../../i18n";
-import { Btn, Card, Chip, errorKey, Loading, MasteryBadge, Notice, Ring, Row, Screen, T, type BadgeKind } from "../../components/ui";
+import { callFn } from "../../../lib/supabase";
+import { useStudent } from "../../../lib/session";
+import { useMastery } from "../../../lib/hooks";
+import { lessonByConcept, title } from "../../../lib/textbook";
+import { currentLang, num } from "../../../i18n";
+import { Icon } from "../../../components/Icon";
+import { Btn, Card, Chip, errorKey, Loading, MasteryBadge, Notice, Ring, Row, Screen, T, type BadgeKind } from "../../../components/ui";
 
 interface Next { concept_id: string; lesson_id: string; chapter: number; title: string; action: string; reason: string; badge: BadgeKind }
 export default function Today() {
@@ -44,8 +45,8 @@ export default function Today() {
         </Card>
       ) : null}
       {exam.data && days !== null ? (
-        <Card onPress={() => router.push("/(student)/exams")} label={t("exam.title")}>
-          <Row className="justify-between"><View className="flex-1"><T variant="label">{t("exam.title")}</T><T variant="h">{t("today.exam", { name: exam.data.exam_name, n: num(days) })}</T></View><T className="text-3xl">🗓️</T></Row>
+        <Card onPress={() => router.navigate("/(student)/exams")} label={t("exam.title")} className="border-hot bg-hot-soft">
+          <Row className="justify-between"><View className="flex-1"><T variant="label">{t("exam.title")}</T><T variant="h">{t("today.exam", { name: exam.data.exam_name, n: num(days) })}</T></View><Icon name="calendar" size={30} color="#6B5A00" /></Row>
         </Card>
       ) : null}
       <Card>

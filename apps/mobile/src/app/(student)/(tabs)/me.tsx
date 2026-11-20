@@ -2,12 +2,12 @@ import React from "react";
 import { View } from "react-native";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
-import { useSession } from "../../lib/session";
-import { useMastery } from "../../lib/hooks";
-import { allLessons, chapters, title } from "../../lib/textbook";
-import { currentLang, num, setLanguage } from "../../i18n";
-import { Bar, Btn, Card, Chip, Row, Screen, T } from "../../components/ui";
-import { useVoiceConsent } from "../../components/VoiceButton";
+import { useSession } from "../../../lib/session";
+import { useMastery } from "../../../lib/hooks";
+import { allLessons, chapters, title } from "../../../lib/textbook";
+import { currentLang, num, setLanguage } from "../../../i18n";
+import { Bar, Btn, Card, Chip, Row, Screen, T } from "../../../components/ui";
+import { useVoiceConsent } from "../../../components/VoiceButton";
 
 export default function Me() {
   const { t, i18n } = useTranslation();

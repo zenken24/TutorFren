@@ -7,7 +7,8 @@ import { useChildren } from "../../lib/guardian";
 import { useSession } from "../../lib/session";
 import { num } from "../../i18n";
 import { GHeader } from "../../components/GuardianMenu";
-import { Btn, Card, Chip, Loading, Row, Screen, T } from "../../components/ui";
+import { OpenChild } from "../../components/OpenChild";
+import { Btn, Card, Chip, Loading, Row, Screen, Status, T } from "../../components/ui";
 
 export default function Children() {
   const { t } = useTranslation();
@@ -24,14 +25,15 @@ export default function Children() {
             <View className="flex-1">
               <T variant="h">{c.nickname}</T>
               <T variant="small">{t("add.grade")} {num(c.grade)} · {t(c.device_mode === "shared" ? "child.thisPhone" : "child.ownPhone")}</T>
-              {s.children.some((x) => x.id === c.id) ? <T variant="small" className="text-primary-dark">✓ {t("child.enrolled")}</T> : null}
+              {s.children.some((x) => x.id === c.id) ? <Status tone="ok" text={t("child.enrolled")} /> : null}
             </View>
             <Chip tone={c.status === "active" ? "teal" : "amber"} title={t(c.status === "active" ? "g.active" : "g.pending")} />
           </Row>
           <T variant="small">{t(c.status === "active" ? "children.tapActive" : "children.tapPending")}</T>
+          <OpenChild child={c} />
         </Card>
       ))}
-      <Btn title={`＋ ${t("g.add")}`} onPress={() => router.push("/(guardian)/add-child")} />
+      <Btn icon="plus" title={t("g.add")} onPress={() => router.push("/(guardian)/add-child")} />
     </Screen>
   );
 }

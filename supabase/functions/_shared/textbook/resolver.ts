@@ -127,14 +127,17 @@ export function parseReference(input: string): ParsedRef | null {
 // ---------------------------------------------------------------- resolve
 const KIND_RANK: Record<BlockKind, number> = { let_us_do: 0, exercise: 1, task: 2, let_us_try: 3 };
 
+/** Bangla digits in Bangla mode (০-৯), unchanged in English mode. */
+export const digits = (s: string, lang: Lang) => (lang === "bn" ? s.replace(/[0-9]/g, (d) => "০১২৩৪৫৬৭৮৯"[Number(d)]) : s);
 export function createResolver(index: TextbookIndex) {
   const chapters = new Map(index.chapters.map((c) => [c.number, c]));
   const lessons = new Map(index.chapters.flatMap((c) => c.lessons.map((l) => [l.id, l] as const)));
 
   function cand(b: Block, q: Question | null, sub: string | null, lang: Lang): Candidate {
     const ch = chapters.get(b.chapter)!;
+    // the chosen language only: never show English question text in Bangla mode (or the reverse)
     const pick = (o: { text_en: string | null; text_bn: string | null } | null | undefined) =>
-      o ? (lang === "bn" ? o.text_bn ?? o.text_en : o.text_en ?? o.text_bn) : null;
+      o ? (lang === "bn" ? o.text_bn : o.text_en) : null;
     const si = q && sub ? q.sub_items.find((s) => s.label === sub) : undefined;
     let text = pick(q);
     if (si) text = [text, `(${sub}) ${pick(si) ?? ""}`.trim()].filter(Boolean).join(" ");
@@ -149,7 +152,7 @@ export function createResolver(index: TextbookIndex) {
       pdf_pages: q ? [q.pdf_page] : b.pdf_pages,
       question_text: text, text_verified: q?.text_verified ?? false,
       lesson_id: b.lesson_id, lesson_pdf_pages: lesson ? range(lesson.pdf_pages[0], lesson.pdf_pages[1]) : [],
-      source_label: `${lang === "bn" ? index.book.source_label_bn : index.book.source_label_en} · ${lang === "bn" ? "অধ্যায়" : "Ch"} ${b.chapter} · ${lang === "bn" ? "পৃ." : "p."} ${page}`,
+      source_label: digits(`${lang === "bn" ? index.book.source_label_bn : index.book.source_label_en} · ${lang === "bn" ? "অধ্যায়" : "Ch"} ${b.chapter} · ${lang === "bn" ? "পৃ." : "p."} ${page}`, lang),
     };
   }
   const range = (a: number, b: number) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
@@ -271,10 +274,10 @@ export function createResolver(index: TextbookIndex) {
     const off = index.book.page_map.ranges[0].offset;
     return {
       block_id: `page-${pp}`, kind: "exercise", chapter: ch.number, chapter_title: lang === "bn" ? ch.title_bn : ch.title_en,
-      label: lang === "bn" ? `পৃষ্ঠা ${pp}` : `Page ${pp}`, question: null, sub: null, printed_page: pp, pdf_pages: [pp - off],
+      label: lang === "bn" ? digits(`পৃষ্ঠা ${pp}`, lang) : `Page ${pp}`, question: null, sub: null, printed_page: pp, pdf_pages: [pp - off],
       question_text: null, text_verified: false, lesson_id: lesson?.id ?? null,
       lesson_pdf_pages: lesson ? range(lesson.pdf_pages[0], lesson.pdf_pages[1]) : [],
-      source_label: `${lang === "bn" ? index.book.source_label_bn : index.book.source_label_en} · ${lang === "bn" ? "অধ্যায়" : "Ch"} ${ch.number} · ${lang === "bn" ? "পৃ." : "p."} ${pp}`,
+      source_label: digits(`${lang === "bn" ? index.book.source_label_bn : index.book.source_label_en} · ${lang === "bn" ? "অধ্যায়" : "Ch"} ${ch.number} · ${lang === "bn" ? "পৃ." : "p."} ${pp}`, lang),
     };
   }
   function nearest(p: ParsedRef, lang: Lang, ctx: LookupContext): Candidate[] {

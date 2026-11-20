@@ -56,7 +56,7 @@ function Viewer({ visible, onClose, startPage, minPage = 1, maxPage = 182 }: Vie
   const go = (d: number) => setPage((p) => Math.max(minPage, Math.min(maxPage, p + d)));
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onClose}>
-      <GestureHandlerRootView style={{ flex: 1, backgroundColor: "#0F2A2E" }}>
+      <GestureHandlerRootView style={{ flex: 1, backgroundColor: "#0E2A33" }}>
         <View className="flex-row items-center justify-between px-3 pt-12 pb-2">
           <Chip title={t("common.close")} onPress={onClose} tone="plain" />
           <T className="text-white font-bold">{t("page.printed", { n: num(page) })}</T>
