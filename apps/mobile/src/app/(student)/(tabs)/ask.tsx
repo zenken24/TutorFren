@@ -1,7 +1,7 @@
 // Ask: curriculum-grounded tutor chat with TEXTBOOK LOOKUP. "Exercise 5 question 3" -> the exact page
 // card, then step-by-step hints for that question. The chat lives in memory only (not saved on the phone).
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
+import { KeyboardAvoidingView, Platform, ScrollView, type TextInput as RNTextInput, View } from "react-native";
 import { TextInput } from "../../../components/AppText";
 import { useLocalSearchParams } from "expo-router";
 import { useTranslation } from "react-i18next";
@@ -10,7 +10,7 @@ import { useStudent } from "../../../lib/session";
 import { currentLang, num } from "../../../i18n";
 import { Btn, Chip, errorKey, T } from "../../../components/ui";
 import { PageCard } from "../../../components/PageCard";
-import { VoiceButton } from "../../../components/VoiceButton";
+import { KeyboardVoice } from "../../../components/VoiceButton";
 
 interface Cand { block_id: string; kind: string; chapter: number; label: string; question: number | null; sub: string | null; printed_page: number; pdf_pages: number[]; question_text: string | null; source_label: string }
 type Lookup = { status: "resolved"; match: Cand; candidates: Cand[] } | { status: "ambiguous"; candidates: Cand[] } | { status: "not_found"; parsed: unknown; nearest: Cand[] };
@@ -31,6 +31,7 @@ export default function Ask() {
   const idRef = useRef(1);
   const scroll = useRef<React.ComponentRef<typeof ScrollView>>(null);
   const handled = useRef<string | null>(null);
+  const inputRef = useRef<React.ComponentRef<typeof RNTextInput>>(null);
   const add = (m: Record<string, unknown>) => setMsgs((x) => [...x, { ...m, id: idRef.current++ } as Msg]);
 
   const tutor = useCallback(async (message: string, cand: Cand | null, history: Msg[]) => {
@@ -95,11 +96,11 @@ export default function Ask() {
       <View className="p-3 gap-2 bg-surface border-t border-surface-line">
         {topic ? <View className="flex-row"><Chip tone="teal" title={`${candTitle(topic)}  ×`} onPress={() => setTopic(null)} /></View> : null}
         <View className="flex-row gap-2 items-end">
-          <TextInput value={input} onChangeText={setInput} multiline placeholder={t("ask.placeholder")} placeholderTextColor="#8FA6AD" accessibilityLabel={t("ask.title")} maxLength={800}
+          <TextInput ref={inputRef} value={input} onChangeText={setInput} multiline placeholder={t("ask.placeholder")} placeholderTextColor="#8FA6AD" accessibilityLabel={t("ask.title")} maxLength={800}
             className="flex-1 min-h-[52px] max-h-32 bg-surface-page border border-surface-line rounded-card px-4 py-3 text-base font-sans text-ink" />
           <Btn title={t("common.send")} onPress={() => send(input)} disabled={!input.trim() || busy} />
         </View>
-        <VoiceButton onTranscript={(tr) => setInput((x) => (x ? `${x} ${tr}` : tr))} />
+        <KeyboardVoice focusInput={() => inputRef.current?.focus()} />
       </View>
     </KeyboardAvoidingView>
   );

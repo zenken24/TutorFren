@@ -283,8 +283,8 @@
  "cons.core_learning.what": "Required. Answers and progress are saved so the next lesson can be chosen.",
  "cons.core_learning.stored": "Stored: nickname, class, language, answers, written explanations, progress.",
  "cons.core_learning.off": "Can't be turned off; delete the account to stop.",
- "cons.voice_input.what": "Your child can answer by speaking; speech is turned into text.",
- "cons.voice_input.stored": "Recordings are never kept; they're deleted once the text is made.",
+ "cons.voice_input.what": "Your child can speak using the phone keyboard's microphone (e.g. Gboard); speech is turned into text.",
+ "cons.voice_input.stored": "The phone's keyboard turns speech into text; TutorFren never receives a recording, only the text.",
  "cons.voice_input.off": "When off, the mic is hidden and your child types.",
  "cons.guardian_view.what": "You see a progress summary: what's mastered, what needs practice, which days they learned.",
  "cons.guardian_view.stored": "Conversations and answers are not shown.",
@@ -318,5 +318,6 @@
  "lesson.practiceIntro": "3 questions. Needed to complete the lesson.",
  "lesson.checkIntro": "One new question to check. Needed to complete the lesson.",
  "lesson.needBoth": "To complete the lesson, finish both Practice and the Mastery check.",
- "lesson.finishedSub": "Practice and Mastery check are done."
+ "lesson.finishedSub": "Practice and Mastery check are done.",
+ "voice.keyboardTip": "Tap the microphone on your keyboard and speak. Check the words, then tap Send."
 }

@@ -67,3 +67,19 @@ export function VoiceButton({ onTranscript }: { onTranscript: (text: string) => 
     </>
   );
 }
+
+/** Voice via the phone keyboard's own mic (e.g. Gboard voice typing, Bangla + English).
+ *  Android does not let apps press the keyboard mic, so "Speak" opens the keyboard on the text box and shows
+ *  where to tap. No audio reaches TutorFren and no AI request is used; only the typed text is sent. */
+export function KeyboardVoice({ focusInput }: { focusInput: () => void }) {
+  const { t } = useTranslation();
+  const consent = useVoiceConsent();
+  const [tip, setTip] = useState(false);
+  if (!consent.data) return null; // the guardian turned voice off
+  return (
+    <>
+      <Btn kind="soft" icon="mic" title={t("voice.start")} onPress={() => { focusInput(); setTip(true); }} />
+      {tip ? <T variant="small" className="text-info-text">{t("voice.keyboardTip")}</T> : null}
+    </>
+  );
+}
