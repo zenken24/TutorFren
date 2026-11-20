@@ -320,21 +320,7 @@ Use `-c` (clear cache) after changing any `.env` file or the colour/theme config
 
 ---
 
-## 9. Troubleshooting
-
-| Symptom | Fix |
-|---|---|
-| App spins forever on login | The app can't reach the backend. Over USB, `apps/mobile/.env` must contain `EXPO_PUBLIC_SUPABASE_URL=http://127.0.0.1:54321` and both `adb reverse` commands must be active; restart with `npx expo start --localhost -c` |
-| `Missing script: "functions:serve"` | Run it from the project root, not `apps/mobile` |
-| `Edge Runtime container is no longer available` | Two functions servers were started. Run `pkill -f "functions serve"` and `docker rm -f supabase_edge_runtime_TutorFren`, then start one again |
-| `Env name cannot start with SUPABASE_, skipping` | Expected. The functions server provides these values itself |
-| Tutor replies are slow or say "not sure" immediately | The Gemini key is missing or its daily free quota is used up. Check the `functions:serve` terminal |
-| `adb devices` shows `unauthorized` | Unlock the phone and accept the USB debugging prompt. If no prompt appears: Developer options → *Revoke USB debugging authorisations*, then reconnect |
-| A child's tile says to ask the guardian to set it up again | That phone's saved login was revoked or reset. Guardian → Devices → *Use on this phone* |
-
----
-
-## 10. Project structure
+## 9. Project structure
 
 ```
 TutorFren/

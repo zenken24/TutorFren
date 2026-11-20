@@ -19,10 +19,14 @@ type Guarded = <T>(fn: () => Promise<T>) => Promise<T>;
 const StepUpContext = createContext<Guarded>((fn) => fn());
 export const useStepUp = () => useContext(StepUpContext);
 
+// Screenshot / screen-recording block for guardian screens. Turn it off for demo recordings with
+// EXPO_PUBLIC_ALLOW_SCREEN_CAPTURE=1 in apps/mobile/.env (restart Expo with -c). Keep it on for real use.
+const ALLOW_CAPTURE = process.env.EXPO_PUBLIC_ALLOW_SCREEN_CAPTURE === "1";
+function BlockCapture() { usePreventScreenCapture("guardian"); return null; }
+
 export function GuardianGate({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
   const s = useSession();
-  usePreventScreenCapture("guardian");
   const [pin, setPin] = useState("");
   const [msg, setMsg] = useState<string | null>(null);
   const [hasPin, setHasPin] = useState(false);
@@ -72,6 +76,7 @@ export function GuardianGate({ children }: { children: React.ReactNode }) {
     const configured = hasPin || hasDevice;
     return (
       <Screen>
+        {ALLOW_CAPTURE ? null : <BlockCapture />}
         <Icon name="lock" size={36} color="#024560" />
         <T variant="title">{t(configured ? "lock.title" : "lock.setup")}</T>
         {!configured ? <T variant="small">{t("lock.setupHelp")}</T> : null}
@@ -89,6 +94,7 @@ export function GuardianGate({ children }: { children: React.ReactNode }) {
   }
   return (
     <StepUpContext.Provider value={guarded}>
+      {ALLOW_CAPTURE ? null : <BlockCapture />}
       <View style={{ flex: 1 }} onStartShouldSetResponderCapture={() => { last.current = Date.now(); return false; }}>{children}</View>
       <Modal visible={!!reauth} transparent animationType="fade" onRequestClose={() => { reauth?.resolve(false); setReauth(null); }}>
         <View className="flex-1 justify-end bg-black/40">
